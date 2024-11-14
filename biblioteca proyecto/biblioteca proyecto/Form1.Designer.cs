@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             button1 = new Button();
-            checkBox1 = new CheckBox();
+            checkedListBox1 = new CheckedListBox();
+            button2 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -41,8 +42,24 @@
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // checkedListBox1
             // 
+<<<<<<< HEAD
+            checkedListBox1.FormattingEnabled = true;
+            checkedListBox1.Location = new Point(117, 207);
+            checkedListBox1.Name = "checkedListBox1";
+            checkedListBox1.Size = new Size(120, 94);
+            checkedListBox1.TabIndex = 1;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(169, 151);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 2;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+=======
             checkBox1.AutoSize = true;
             checkBox1.Location = new Point(227, 211);
             checkBox1.Name = "checkBox1";
@@ -50,23 +67,25 @@
             checkBox1.TabIndex = 1;
             checkBox1.Text = "checkBox1";
             checkBox1.UseVisualStyleBackColor = true;
+>>>>>>> main
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(checkBox1);
+            Controls.Add(button2);
+            Controls.Add(checkedListBox1);
             Controls.Add(button1);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private Button button1;
-        private CheckBox checkBox1;
+        private CheckedListBox checkedListBox1;
+        private Button button2;
     }
 }
