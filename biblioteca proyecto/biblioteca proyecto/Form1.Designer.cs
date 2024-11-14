@@ -44,6 +44,7 @@
             // 
             // checkedListBox1
             // 
+<<<<<<< HEAD
             checkedListBox1.FormattingEnabled = true;
             checkedListBox1.Location = new Point(117, 207);
             checkedListBox1.Name = "checkedListBox1";
@@ -58,6 +59,15 @@
             button2.TabIndex = 2;
             button2.Text = "button2";
             button2.UseVisualStyleBackColor = true;
+=======
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(227, 211);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(82, 19);
+            checkBox1.TabIndex = 1;
+            checkBox1.Text = "checkBox1";
+            checkBox1.UseVisualStyleBackColor = true;
+>>>>>>> main
             // 
             // Form1
             // 
