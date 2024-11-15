@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace biblioteca_proyecto
 {
-    internal class Usuario
+    internal class Persona
     {
         String nombre;
         String departamento;
         DateTime fechaSancion;
 
-        public Usuario(string nombre, string departamento)
+        public Persona(string nombre, string departamento)
         {
             this.nombre = nombre;
             this.departamento = departamento;
         }
 
-        public Usuario(string nombre, string departamento, DateTime fechaSancion) : this(nombre, departamento)
+        public Persona(string nombre, string departamento, DateTime fechaSancion) : this(nombre, departamento)
         {
             this.fechaSancion = fechaSancion;
         }
