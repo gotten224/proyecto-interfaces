@@ -16,8 +16,26 @@ namespace biblioteca_proyecto
         {
         }
 
+        public DateTime CalcularFechaDevolucion(Libro libro, DateTime fechaPrestamo)
+        {
+            DateTime fechaDev = fechaPrestamo;
+            if(libro.Tipo == "sala")
+            {
+                fechaDev = fechaDev.AddDays(30);
+            }
+            if (libro.Tipo == "almacen")
+            {
+                fechaDev = fechaDev.AddDays(45);
+            }
+            return fechaDev;
+        }
 
-       
+        public DateTime CalcularSancion()
+        {
+            throw new NotImplementedException();
+        }
+
+
 
     }
 }

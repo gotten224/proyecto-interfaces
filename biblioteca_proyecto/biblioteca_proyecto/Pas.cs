@@ -15,5 +15,17 @@ namespace biblioteca_proyecto
         public Pas(string nombre, string departamento, DateTime fechaSancion) : base(nombre, departamento, fechaSancion)
         {
         }
+
+        public DateTime CalcularFechaDevolucion(Libro libro, DateTime fechaPrestamo)
+        {
+            DateTime fechaDev = fechaPrestamo.AddDays(15);
+            return fechaDev;
+        }
+
+        public DateTime CalcularSancion()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
