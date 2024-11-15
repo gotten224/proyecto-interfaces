@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace biblioteca_proyecto
 {
-    internal class Persona
+    internal class Persona : IUsuario
     {
         String nombre;
         String departamento;
@@ -26,5 +26,15 @@ namespace biblioteca_proyecto
         public string Nombre { get => nombre; set => nombre = value; }
         public string Departamento { get => departamento; set => departamento = value; }
         public DateTime FechaSancion { get => fechaSancion; set => fechaSancion = value; }
+
+        public DateTime CalcularFechaDevolucion()
+        {
+            throw new NotImplementedException();
+        }
+
+        public DateTime CalcularSancion()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
