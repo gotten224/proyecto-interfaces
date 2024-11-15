@@ -16,5 +16,21 @@ namespace biblioteca_proyecto
         {
             InitializeComponent();
         }
+
+        private void Rbtipo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RbProfesor.Checked)
+            {
+                PbTipo.Image = ILtipo.Images[0];
+            }
+            if (RbPas.Checked)
+            {
+                PbTipo.Image = ILtipo.Images[1];
+            }
+            if (RbEstudinte.Checked)
+            {
+                PbTipo.Image = ILtipo.Images[2];
+            }
+        }
     }
 }
