@@ -1,3 +1,5 @@
+using System.IO;
+
 namespace biblioteca_proyecto
 {
     public partial class Form1 : Form
@@ -27,20 +29,79 @@ namespace biblioteca_proyecto
         {
             IsMdiContainer = true;
             String linea = "";
+
+            //Bloque Usuarios
             try
             {
-                StreamReader pr = new StreamReader(Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\usuarios.txt", System.Text.Encoding.UTF7);
+                StreamReader pr = new StreamReader(Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\usuarios.txt", System.Text.Encoding.UTF8);
                 linea = pr.ReadLine();
                 while (linea != null) {
-                    String[] spliteado2 = linea.Split(",");
-                    if (linea.StartsWith("profesor")) {
-                        if (spliteado2[1] != null) {
-                        }
-                        Profesor p = new Profesor()
+                    String[] spliteado2 = linea.Split(',');
+                    String tipoYNombre = spliteado2[0].Trim();
+                    String nombre = tipoYNombre.Substring(tipoYNombre.IndexOf(' ') + 1);
+                    if (linea.StartsWith("profesor"))
+                    {
+                        if (spliteado2.Length > 2)
                         {
-                            Nombre = spliteado2[0],
-                            Departamento = spliteado2[1]
-                        };
+                            Profesor p = new Profesor()
+                            {
+                                Nombre = nombre,
+                                Departamento = spliteado2[1],
+                                FechaSancion = Convert.ToDateTime(spliteado2[2])
+                            };
+                            personas.Add(p);
+                        }
+                        else {
+                            Profesor p = new Profesor()
+                            {
+                                Nombre = nombre,
+                                Departamento = spliteado2[1]
+                            };
+                            personas.Add(p);
+                        }
+                    } else if (linea.StartsWith("pas"))
+                    {
+                        if (spliteado2.Length > 2)
+                        {
+                            MessageBox.Show("Tengo Fecha");
+                            Pas pa = new Pas()
+                            {
+                                Nombre = nombre,
+                                Departamento = spliteado2[1],
+                                FechaSancion = Convert.ToDateTime(spliteado2[2])
+                            };
+                            personas.Add(pa);
+                        }
+                        else
+                        {
+                            Pas pa = new Pas()
+                            {
+                                Nombre = nombre,
+                                Departamento = spliteado2[1]
+                            };
+                            personas.Add(pa);
+                        }
+
+                    } else if (linea.StartsWith("alumno")){
+                        if (spliteado2.Length > 2)
+                        {
+                            Alumno a = new Alumno()
+                            {
+                                Nombre = nombre,
+                                Departamento = spliteado2[1],
+                                FechaSancion = Convert.ToDateTime(spliteado2[2])
+                            };
+                            personas.Add(a);
+                        }
+                        else
+                        {
+                            Alumno a = new Alumno()
+                            {
+                                Nombre = nombre,
+                                Departamento = spliteado2[1]
+                            };
+                            personas.Add(a);
+                        }
                     }
                     linea = pr.ReadLine();
                 }
@@ -49,6 +110,45 @@ namespace biblioteca_proyecto
             catch(Exception ex) {
                 MessageBox.Show(ex.Message);
             }
+
+            //Bloque Libros
+            try {
+                StreamReader pr = new StreamReader(Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\libros.txt", System.Text.Encoding.UTF8);
+                linea = pr.ReadLine();
+                while (linea != null) {
+                    String[] spliteado = linea.Split(',');
+                    String titulo = spliteado[0].Trim();
+                    String nombre = titulo.Substring(titulo.IndexOf(' ') + 1);
+                    String[] tipo = linea.Split(" ");
+                    Libro l = new Libro()
+                    {
+                        Tipo = tipo[0],
+                        Titulo = nombre,
+                        Id = Convert.ToInt32(spliteado[1])
+                    };
+                    libros.Add(l);
+                    linea = pr.ReadLine();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            //Bloque Transacciones(En Desarrollo)
+            try {
+                StreamReader pr = new StreamReader(Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\libros.txt", System.Text.Encoding.UTF8);
+                linea = pr.ReadLine();
+                while (linea != null) {
+                    linea = pr.ReadLine();
+                }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
 
         }
 

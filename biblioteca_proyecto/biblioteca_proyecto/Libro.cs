@@ -22,5 +22,11 @@ namespace biblioteca_proyecto
         public string Tipo { get => tipo; set => tipo = value; }
         public string Titulo { get => titulo; set => titulo = value; }
         public int Id { get => id; set => id = value; }
+
+        public Libro() {
+            this.tipo = "";
+            this.titulo = "";
+            this.id = 0;
+        }
     }
 }
