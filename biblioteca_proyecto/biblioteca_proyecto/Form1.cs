@@ -23,5 +23,17 @@ namespace biblioteca_proyecto
         {
             IsMdiContainer = true;
         }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            foreach (Form i in this.MdiChildren)
+            {
+                i.Close();
+            }
+
+            Form f = new FrmLibro();
+            f.MdiParent = this;
+            f.Show();
+        }
     }
 }

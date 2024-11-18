@@ -16,5 +16,22 @@ namespace biblioteca_proyecto
         {
             InitializeComponent();
         }
+
+        private void TpAltaLibro_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RbSala_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RbSala.Checked)
+            {
+                PbUbicacion.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\sala.jpg";
+            }
+            if (RbAlmacen.Checked)
+            {
+                PbUbicacion.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\almacen.jpg";
+            }
+        }
     }
 }

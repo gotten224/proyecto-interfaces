@@ -63,6 +63,7 @@
             toolStripButton2.Size = new Size(38, 35);
             toolStripButton2.Text = "Libro";
             toolStripButton2.TextImageRelation = TextImageRelation.ImageAboveText;
+            toolStripButton2.Click += toolStripButton2_Click;
             // 
             // toolStripButton3
             // 
