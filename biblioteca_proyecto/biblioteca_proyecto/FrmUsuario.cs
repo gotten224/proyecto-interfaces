@@ -32,5 +32,20 @@ namespace biblioteca_proyecto
                 PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\profe.jpg";
             }
         }
+        private void Rbtipobusc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RbProfesor.Checked)
+            {
+                PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\estu.jpg"; ;
+            }
+            if (RbPas.Checked)
+            {
+                PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\pas.jpg";
+            }
+            if (RbEstudinte.Checked)
+            {
+                PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\profe.jpg";
+            }
+        }
     }
 }
