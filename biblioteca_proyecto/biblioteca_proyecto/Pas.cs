@@ -22,9 +22,12 @@ namespace biblioteca_proyecto
             return fechaDev;
         }
 
-        public DateTime CalcularSancion()
+        public DateTime CalcularSancion(Prestamo prestamo, Devolucion devolucion)
         {
-            throw new NotImplementedException();
+            int diasRetraso = (devolucion.FechaTransaccion - prestamo.FechaDevolucion).Days;
+            int diasSumar = diasRetraso * 3;
+            DateTime fechaSanc = devolucion.FechaTransaccion.AddDays(diasSumar);
+            return fechaSanc;
         }
 
     }
