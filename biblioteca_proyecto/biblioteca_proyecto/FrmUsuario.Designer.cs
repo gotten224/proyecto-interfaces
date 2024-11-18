@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUsuario));
             tabControl1 = new TabControl();
             TpAlta = new TabPage();
@@ -47,12 +46,17 @@
             LbNombre = new Label();
             TpListar = new TabPage();
             TpBuscar = new TabPage();
-            ILtipo = new ImageList(components);
+            listView1 = new ListView();
+            textBox1 = new TextBox();
+            button1 = new Button();
+            pictureBox1 = new PictureBox();
             tabControl1.SuspendLayout();
             TpAlta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PbTipo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BtnAgragar).BeginInit();
             groupBox1.SuspendLayout();
+            TpListar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -139,12 +143,10 @@
             // RbPas
             // 
             RbPas.AutoSize = true;
-            RbPas.Checked = true;
             RbPas.Location = new Point(20, 41);
             RbPas.Name = "RbPas";
             RbPas.Size = new Size(43, 19);
             RbPas.TabIndex = 1;
-            RbPas.TabStop = true;
             RbPas.Text = "Pas";
             RbPas.UseVisualStyleBackColor = true;
             RbPas.CheckedChanged += Rbtipo_CheckedChanged;
@@ -156,7 +158,6 @@
             RbProfesor.Name = "RbProfesor";
             RbProfesor.Size = new Size(69, 19);
             RbProfesor.TabIndex = 0;
-            RbProfesor.TabStop = true;
             RbProfesor.Text = "Profesor";
             RbProfesor.UseVisualStyleBackColor = true;
             RbProfesor.CheckedChanged += Rbtipo_CheckedChanged;
@@ -213,6 +214,10 @@
             // 
             // TpListar
             // 
+            TpListar.Controls.Add(pictureBox1);
+            TpListar.Controls.Add(button1);
+            TpListar.Controls.Add(textBox1);
+            TpListar.Controls.Add(listView1);
             TpListar.Location = new Point(4, 24);
             TpListar.Name = "TpListar";
             TpListar.Padding = new Padding(3);
@@ -231,14 +236,39 @@
             TpBuscar.Text = "Buscar";
             TpBuscar.UseVisualStyleBackColor = true;
             // 
-            // ILtipo
+            // listView1
             // 
-            ILtipo.ColorDepth = ColorDepth.Depth32Bit;
-            ILtipo.ImageStream = (ImageListStreamer)resources.GetObject("ILtipo.ImageStream");
-            ILtipo.TransparentColor = Color.Transparent;
-            ILtipo.Images.SetKeyName(0, "profe.jpg");
-            ILtipo.Images.SetKeyName(1, "pas.jpg");
-            ILtipo.Images.SetKeyName(2, "estu.jpg");
+            listView1.Location = new Point(6, 84);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(776, 336);
+            listView1.TabIndex = 0;
+            listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(10, 41);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(184, 23);
+            textBox1.TabIndex = 1;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(198, 42);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 2;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(710, 34);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(30, 30);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 19;
+            pictureBox1.TabStop = false;
             // 
             // FrmUsuario
             // 
@@ -256,6 +286,9 @@
             ((System.ComponentModel.ISupportInitialize)BtnAgragar).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            TpListar.ResumeLayout(false);
+            TpListar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -278,6 +311,9 @@
         private TabPage TpBuscar;
         private MaskedTextBox MtbFechSan;
         private PictureBox PbTipo;
-        private ImageList ILtipo;
+        private PictureBox pictureBox1;
+        private Button button1;
+        private TextBox textBox1;
+        private ListView listView1;
     }
 }
