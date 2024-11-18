@@ -33,7 +33,7 @@
             TpAlta = new TabPage();
             PbTipo = new PictureBox();
             MtbFechSan = new MaskedTextBox();
-            BtnAgragar = new PictureBox();
+            BtnAgregar = new PictureBox();
             groupBox1 = new GroupBox();
             RbEstudinte = new RadioButton();
             RbPas = new RadioButton();
@@ -45,34 +45,36 @@
             LbDepart = new Label();
             LbNombre = new Label();
             TpListar = new TabPage();
-            pictureBox1 = new PictureBox();
-            listView1 = new ListView();
+            CbTipo = new ComboBox();
+            PbBorr = new PictureBox();
+            LvListar = new ListView();
             TpBuscar = new TabPage();
-            pictureBox2 = new PictureBox();
-            maskedTextBox1 = new MaskedTextBox();
-            groupBox2 = new GroupBox();
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
-            radioButton3 = new RadioButton();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
+            BtnBusc = new Button();
+            TxtBusc = new TextBox();
+            PbBusc = new PictureBox();
+            TxtBuscFech = new MaskedTextBox();
+            GbBuscTip = new GroupBox();
+            RbBuscEstu = new RadioButton();
+            RbBuscPas = new RadioButton();
+            RbBuscProf = new RadioButton();
+            TxtBuscDept = new TextBox();
+            TxtBuscNom = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            textBox4 = new TextBox();
-            button2 = new Button();
-            comboBox1 = new ComboBox();
+            PbModif = new PictureBox();
             tabControl1.SuspendLayout();
             TpAlta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PbTipo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)BtnAgragar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)BtnAgregar).BeginInit();
             groupBox1.SuspendLayout();
             TpListar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PbBorr).BeginInit();
             TpBuscar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)PbBusc).BeginInit();
+            GbBuscTip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)PbModif).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -90,7 +92,7 @@
             // 
             TpAlta.Controls.Add(PbTipo);
             TpAlta.Controls.Add(MtbFechSan);
-            TpAlta.Controls.Add(BtnAgragar);
+            TpAlta.Controls.Add(BtnAgregar);
             TpAlta.Controls.Add(groupBox1);
             TpAlta.Controls.Add(TbDepartamaento);
             TpAlta.Controls.Add(TbNombre);
@@ -124,15 +126,15 @@
             MtbFechSan.TabIndex = 19;
             MtbFechSan.ValidatingType = typeof(DateTime);
             // 
-            // BtnAgragar
+            // BtnAgregar
             // 
-            BtnAgragar.Image = (Image)resources.GetObject("BtnAgragar.Image");
-            BtnAgragar.Location = new Point(16, 27);
-            BtnAgragar.Name = "BtnAgragar";
-            BtnAgragar.Size = new Size(30, 30);
-            BtnAgragar.SizeMode = PictureBoxSizeMode.StretchImage;
-            BtnAgragar.TabIndex = 18;
-            BtnAgragar.TabStop = false;
+            BtnAgregar.Image = (Image)resources.GetObject("BtnAgregar.Image");
+            BtnAgregar.Location = new Point(16, 27);
+            BtnAgregar.Name = "BtnAgregar";
+            BtnAgregar.Size = new Size(30, 30);
+            BtnAgregar.SizeMode = PictureBoxSizeMode.StretchImage;
+            BtnAgregar.TabIndex = 18;
+            BtnAgregar.TabStop = false;
             // 
             // groupBox1
             // 
@@ -230,9 +232,9 @@
             // 
             // TpListar
             // 
-            TpListar.Controls.Add(comboBox1);
-            TpListar.Controls.Add(pictureBox1);
-            TpListar.Controls.Add(listView1);
+            TpListar.Controls.Add(CbTipo);
+            TpListar.Controls.Add(PbBorr);
+            TpListar.Controls.Add(LvListar);
             TpListar.Location = new Point(4, 24);
             TpListar.Name = "TpListar";
             TpListar.Padding = new Padding(3);
@@ -241,33 +243,43 @@
             TpListar.Text = "Listado";
             TpListar.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // CbTipo
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(710, 34);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(30, 30);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 19;
-            pictureBox1.TabStop = false;
+            CbTipo.FormattingEnabled = true;
+            CbTipo.Items.AddRange(new object[] { "Estudiante", "Profesor", "Pas" });
+            CbTipo.Location = new Point(10, 29);
+            CbTipo.Name = "CbTipo";
+            CbTipo.Size = new Size(262, 23);
+            CbTipo.TabIndex = 20;
             // 
-            // listView1
+            // PbBorr
             // 
-            listView1.Location = new Point(6, 84);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(776, 336);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
+            PbBorr.Image = (Image)resources.GetObject("PbBorr.Image");
+            PbBorr.Location = new Point(649, 17);
+            PbBorr.Name = "PbBorr";
+            PbBorr.Size = new Size(44, 49);
+            PbBorr.SizeMode = PictureBoxSizeMode.StretchImage;
+            PbBorr.TabIndex = 19;
+            PbBorr.TabStop = false;
+            // 
+            // LvListar
+            // 
+            LvListar.Location = new Point(6, 84);
+            LvListar.Name = "LvListar";
+            LvListar.Size = new Size(776, 336);
+            LvListar.TabIndex = 0;
+            LvListar.UseCompatibleStateImageBehavior = false;
             // 
             // TpBuscar
             // 
-            TpBuscar.Controls.Add(button2);
-            TpBuscar.Controls.Add(textBox4);
-            TpBuscar.Controls.Add(pictureBox2);
-            TpBuscar.Controls.Add(maskedTextBox1);
-            TpBuscar.Controls.Add(groupBox2);
-            TpBuscar.Controls.Add(textBox2);
-            TpBuscar.Controls.Add(textBox3);
+            TpBuscar.Controls.Add(PbModif);
+            TpBuscar.Controls.Add(BtnBusc);
+            TpBuscar.Controls.Add(TxtBusc);
+            TpBuscar.Controls.Add(PbBusc);
+            TpBuscar.Controls.Add(TxtBuscFech);
+            TpBuscar.Controls.Add(GbBuscTip);
+            TpBuscar.Controls.Add(TxtBuscDept);
+            TpBuscar.Controls.Add(TxtBuscNom);
             TpBuscar.Controls.Add(label1);
             TpBuscar.Controls.Add(label2);
             TpBuscar.Controls.Add(label3);
@@ -280,78 +292,97 @@
             TpBuscar.Text = "Buscar";
             TpBuscar.UseVisualStyleBackColor = true;
             // 
-            // pictureBox2
+            // BtnBusc
             // 
-            pictureBox2.Location = new Point(400, 14);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(368, 402);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 30;
-            pictureBox2.TabStop = false;
+            BtnBusc.Location = new Point(183, 26);
+            BtnBusc.Name = "BtnBusc";
+            BtnBusc.Size = new Size(75, 23);
+            BtnBusc.TabIndex = 32;
+            BtnBusc.Text = "Buscar";
+            BtnBusc.UseVisualStyleBackColor = true;
             // 
-            // maskedTextBox1
+            // TxtBusc
             // 
-            maskedTextBox1.Location = new Point(158, 175);
-            maskedTextBox1.Mask = "00/00/0000";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(200, 23);
-            maskedTextBox1.TabIndex = 29;
-            maskedTextBox1.ValidatingType = typeof(DateTime);
+            TxtBusc.Location = new Point(23, 26);
+            TxtBusc.Name = "TxtBusc";
+            TxtBusc.Size = new Size(154, 23);
+            TxtBusc.TabIndex = 31;
             // 
-            // groupBox2
+            // PbBusc
             // 
-            groupBox2.Controls.Add(radioButton1);
-            groupBox2.Controls.Add(radioButton2);
-            groupBox2.Controls.Add(radioButton3);
-            groupBox2.Location = new Point(158, 230);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(200, 100);
-            groupBox2.TabIndex = 27;
-            groupBox2.TabStop = false;
+            PbBusc.Location = new Point(400, 14);
+            PbBusc.Name = "PbBusc";
+            PbBusc.Size = new Size(368, 402);
+            PbBusc.SizeMode = PictureBoxSizeMode.StretchImage;
+            PbBusc.TabIndex = 30;
+            PbBusc.TabStop = false;
             // 
-            // radioButton1
+            // TxtBuscFech
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(20, 66);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(80, 19);
-            radioButton1.TabIndex = 2;
-            radioButton1.Text = "Estudiante";
-            radioButton1.UseVisualStyleBackColor = true;
+            TxtBuscFech.Location = new Point(158, 175);
+            TxtBuscFech.Mask = "00/00/0000";
+            TxtBuscFech.Name = "TxtBuscFech";
+            TxtBuscFech.Size = new Size(200, 23);
+            TxtBuscFech.TabIndex = 29;
+            TxtBuscFech.ValidatingType = typeof(DateTime);
             // 
-            // radioButton2
+            // GbBuscTip
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(20, 41);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(43, 19);
-            radioButton2.TabIndex = 1;
-            radioButton2.Text = "Pas";
-            radioButton2.UseVisualStyleBackColor = true;
+            GbBuscTip.Controls.Add(RbBuscEstu);
+            GbBuscTip.Controls.Add(RbBuscPas);
+            GbBuscTip.Controls.Add(RbBuscProf);
+            GbBuscTip.Location = new Point(158, 230);
+            GbBuscTip.Name = "GbBuscTip";
+            GbBuscTip.Size = new Size(200, 100);
+            GbBuscTip.TabIndex = 27;
+            GbBuscTip.TabStop = false;
             // 
-            // radioButton3
+            // RbBuscEstu
             // 
-            radioButton3.AutoSize = true;
-            radioButton3.Location = new Point(20, 16);
-            radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(69, 19);
-            radioButton3.TabIndex = 0;
-            radioButton3.Text = "Profesor";
-            radioButton3.UseVisualStyleBackColor = true;
+            RbBuscEstu.AutoSize = true;
+            RbBuscEstu.Location = new Point(20, 66);
+            RbBuscEstu.Name = "RbBuscEstu";
+            RbBuscEstu.Size = new Size(80, 19);
+            RbBuscEstu.TabIndex = 2;
+            RbBuscEstu.Text = "Estudiante";
+            RbBuscEstu.UseVisualStyleBackColor = true;
+            RbBuscEstu.CheckedChanged += Rbtipobusc_CheckedChanged;
             // 
-            // textBox2
+            // RbBuscPas
             // 
-            textBox2.Location = new Point(158, 133);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(200, 23);
-            textBox2.TabIndex = 26;
+            RbBuscPas.AutoSize = true;
+            RbBuscPas.Location = new Point(20, 41);
+            RbBuscPas.Name = "RbBuscPas";
+            RbBuscPas.Size = new Size(43, 19);
+            RbBuscPas.TabIndex = 1;
+            RbBuscPas.Text = "Pas";
+            RbBuscPas.UseVisualStyleBackColor = true;
+            RbBuscPas.CheckedChanged += Rbtipobusc_CheckedChanged;
             // 
-            // textBox3
+            // RbBuscProf
             // 
-            textBox3.Location = new Point(158, 95);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(200, 23);
-            textBox3.TabIndex = 25;
+            RbBuscProf.AutoSize = true;
+            RbBuscProf.Location = new Point(20, 16);
+            RbBuscProf.Name = "RbBuscProf";
+            RbBuscProf.Size = new Size(69, 19);
+            RbBuscProf.TabIndex = 0;
+            RbBuscProf.Text = "Profesor";
+            RbBuscProf.UseVisualStyleBackColor = true;
+            RbBuscProf.CheckedChanged += Rbtipobusc_CheckedChanged;
+            // 
+            // TxtBuscDept
+            // 
+            TxtBuscDept.Location = new Point(158, 133);
+            TxtBuscDept.Name = "TxtBuscDept";
+            TxtBuscDept.Size = new Size(200, 23);
+            TxtBuscDept.TabIndex = 26;
+            // 
+            // TxtBuscNom
+            // 
+            TxtBuscNom.Location = new Point(158, 95);
+            TxtBuscNom.Name = "TxtBuscNom";
+            TxtBuscNom.Size = new Size(200, 23);
+            TxtBuscNom.TabIndex = 25;
             // 
             // label1
             // 
@@ -389,30 +420,15 @@
             label4.TabIndex = 21;
             label4.Text = "Nombre";
             // 
-            // textBox4
+            // PbModif
             // 
-            textBox4.Location = new Point(23, 26);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(154, 23);
-            textBox4.TabIndex = 31;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(183, 26);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 32;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Estudiante", "Profesor", "Pas" });
-            comboBox1.Location = new Point(10, 29);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(262, 23);
-            comboBox1.TabIndex = 20;
+            PbModif.Image = (Image)resources.GetObject("PbModif.Image");
+            PbModif.Location = new Point(23, 367);
+            PbModif.Name = "PbModif";
+            PbModif.Size = new Size(41, 42);
+            PbModif.SizeMode = PictureBoxSizeMode.StretchImage;
+            PbModif.TabIndex = 33;
+            PbModif.TabStop = false;
             // 
             // FrmUsuario
             // 
@@ -427,16 +443,17 @@
             TpAlta.ResumeLayout(false);
             TpAlta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PbTipo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)BtnAgragar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)BtnAgregar).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             TpListar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PbBorr).EndInit();
             TpBuscar.ResumeLayout(false);
             TpBuscar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)PbBusc).EndInit();
+            GbBuscTip.ResumeLayout(false);
+            GbBuscTip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)PbModif).EndInit();
             ResumeLayout(false);
         }
 
@@ -444,7 +461,7 @@
 
         private TabControl tabControl1;
         private TabPage TpAlta;
-        private PictureBox BtnAgragar;
+        private PictureBox BtnAgregar;
         private GroupBox groupBox1;
         private RadioButton RbEstudinte;
         private RadioButton RbPas;
@@ -459,22 +476,23 @@
         private TabPage TpBuscar;
         private MaskedTextBox MtbFechSan;
         private PictureBox PbTipo;
-        private PictureBox pictureBox1;
-        private ListView listView1;
-        private PictureBox pictureBox2;
-        private MaskedTextBox maskedTextBox1;
-        private GroupBox groupBox2;
-        private RadioButton radioButton1;
-        private RadioButton radioButton2;
-        private RadioButton radioButton3;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private PictureBox PbBorr;
+        private ListView LvListar;
+        private PictureBox PbBusc;
+        private MaskedTextBox TxtBuscFech;
+        private GroupBox GbBuscTip;
+        private RadioButton RbBuscEstu;
+        private RadioButton RbBuscPas;
+        private RadioButton RbBuscProf;
+        private TextBox TxtBuscDept;
+        private TextBox TxtBuscNom;
         private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;
-        private Button button2;
-        private TextBox textBox4;
-        private ComboBox comboBox1;
+        private Button BtnBusc;
+        private TextBox TxtBusc;
+        private ComboBox CbTipo;
+        private PictureBox PbModif;
     }
 }
