@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace biblioteca_proyecto
 {
@@ -35,6 +36,12 @@ namespace biblioteca_proyecto
             throw new NotImplementedException();
         }
 
+
+        public Profesor() {
+            this.Nombre = "";
+            this.Departamento = "";
+            this.FechaSancion = DateTime.MinValue;
+        }
 
 
     }
