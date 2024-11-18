@@ -30,5 +30,11 @@ namespace biblioteca_proyecto
             return fechaSanc;
         }
 
+        public Pas() {
+            this.Nombre = "";
+            this.Departamento = "";
+            this.FechaSancion = DateTime.MinValue;
+        }
+
     }
 }
