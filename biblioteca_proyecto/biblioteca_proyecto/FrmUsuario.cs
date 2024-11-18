@@ -21,15 +21,15 @@ namespace biblioteca_proyecto
         {
             if (RbProfesor.Checked)
             {
-                PbTipo.Image = ILtipo.Images[0];
+                PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\estu.jpg"; ;
             }
             if (RbPas.Checked)
             {
-                PbTipo.Image = ILtipo.Images[1];
+                PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\pas.jpg";
             }
             if (RbEstudinte.Checked)
             {
-                PbTipo.Image = ILtipo.Images[2];
+                PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\profe.jpg";
             }
         }
     }
