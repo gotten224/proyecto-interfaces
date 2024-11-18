@@ -20,7 +20,15 @@ namespace biblioteca_proyecto
 
         public Persona(string nombre, string departamento, DateTime fechaSancion) : this(nombre, departamento)
         {
+            this.nombre = nombre;
+            this.departamento = departamento;
             this.fechaSancion = fechaSancion;
+        }
+
+        public Persona() {
+            this.Nombre = "";
+            this.Departamento = "";
+            this.FechaSancion = DateTime.MinValue;
         }
 
         public string Nombre { get => nombre; set => nombre = value; }
