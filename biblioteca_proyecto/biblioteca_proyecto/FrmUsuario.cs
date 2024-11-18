@@ -21,7 +21,7 @@ namespace biblioteca_proyecto
         {
             if (RbProfesor.Checked)
             {
-                PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\estu.jpg"; ;
+                PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\profe.jpg"; ;
             }
             if (RbPas.Checked)
             {
@@ -29,22 +29,22 @@ namespace biblioteca_proyecto
             }
             if (RbEstudinte.Checked)
             {
-                PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\profe.jpg";
+                PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\estu.jpg";
             }
         }
         private void Rbtipobusc_CheckedChanged(object sender, EventArgs e)
         {
-            if (RbProfesor.Checked)
+            if (RbBuscProf.Checked)
             {
-                PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\estu.jpg"; ;
+                PbBusc.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\profe.jpg"; ;
             }
-            if (RbPas.Checked)
+            if (RbBuscPas.Checked)
             {
-                PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\pas.jpg";
+                PbBusc.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\pas.jpg";
             }
-            if (RbEstudinte.Checked)
+            if (RbBuscEstu.Checked)
             {
-                PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\profe.jpg";
+                PbBusc.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\estu.jpg";
             }
         }
     }
