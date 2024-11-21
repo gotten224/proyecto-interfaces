@@ -15,6 +15,10 @@ namespace biblioteca_proyecto
             this.libro = libro;
         }
 
+        public Devolucion(DateTime fechaTransaccion) : base(fechaTransaccion) {
+            this.libro = 0;
+        }
+
         internal int Libro { get => libro; set => libro = value; }
     }
 }

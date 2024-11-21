@@ -144,12 +144,39 @@ namespace biblioteca_proyecto
             }
 
             //Bloque Transacciones(En Desarrollo)
-            try
-            {
-                StreamReader pr = new StreamReader(Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\libros.txt", System.Text.Encoding.UTF8);
+
+            try {
+                StreamReader pr = new StreamReader(Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\transacciones.txt", System.Text.Encoding.UTF8);
                 linea = pr.ReadLine();
-                while (linea != null)
-                {
+                while (linea != null) {
+                    String[] spliteado = linea.Split(",");
+                    String tipoYNombre = spliteado[0].Trim();
+                    String[] prestamos = linea.Split(" ");
+                    String nombre = tipoYNombre.Substring(tipoYNombre.IndexOf(' ') + 1);
+                    DateTime fecha = DateTime.MinValue;
+                    if (linea.StartsWith("fecha"))
+                    {
+                        fecha = Convert.ToDateTime(nombre + spliteado[1] + spliteado[2]);
+ 
+                    }
+                    else if (linea.StartsWith("prestamo"))
+                    {
+                        Prestamo p = new Prestamo(fecha)
+                        {
+                            Persona = nombre + spliteado[2],
+                            Libro = Convert.ToInt32(spliteado[1]),
+                            FechaDevolucion = Convert.ToDateTime(spliteado[2])
+                        };
+                    }else if (linea.StartsWith("devolucion"))
+                    {
+                        Devolucion d = new Devolucion(fecha)
+                        {
+                            Libro = Convert.ToInt32(nombre)
+                        };
+
+                    }
+
+
                     linea = pr.ReadLine();
                 }
 
