@@ -47,5 +47,51 @@ namespace biblioteca_proyecto
                 PbBusc.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\estu.jpg";
             }
         }
+
+        private void BtnAgregar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtNombre_Validated(object sender, EventArgs e)
+        {
+            if (TxtNombre.Text != "")
+            {
+                EpUsuario.SetError(TxtNombre, "El campo debe estar relleno");
+            }
+            else
+            {
+                EpUsuario.SetError(TxtNombre, "");
+            }
+        }
+
+        private void TxtDepartamaento_Validated(object sender, EventArgs e)
+        {
+            if (TxtNombre.Text != "")
+            {
+                EpUsuario.SetError(TxtDepartamaento, "El campo debe estar relleno");
+            }
+            else
+            {
+                EpUsuario.SetError(TxtDepartamaento, "");
+            }
+        }
+
+        private void MtbFechSan_Validated(object sender, EventArgs e)
+        {
+            DateTime dateValue;
+            if (!MtbFechSan.MaskCompleted)
+            {
+                EpUsuario.SetError(MtbFechSan, "El campo debe estar relleno");
+                if(DateTime.TryParse(MtbFechSan.Text, out dateValue))
+                {
+                    EpUsuario.SetError(MtbFechSan, "El campo debe ser una fecha");
+                }
+            }
+            else
+            {
+                EpUsuario.SetError(MtbFechSan, "");
+            }
+        }
     }
 }
