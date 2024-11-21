@@ -70,9 +70,10 @@
             toolStripButton3.Image = (Image)resources.GetObject("toolStripButton3.Image");
             toolStripButton3.ImageTransparentColor = Color.Magenta;
             toolStripButton3.Name = "toolStripButton3";
-            toolStripButton3.Size = new Size(61, 35);
-            toolStripButton3.Text = "Prestamo";
+            toolStripButton3.Size = new Size(74, 35);
+            toolStripButton3.Text = "Transaccion";
             toolStripButton3.TextImageRelation = TextImageRelation.ImageAboveText;
+            toolStripButton3.Click += toolStripButton3_Click;
             // 
             // Form1
             // 
