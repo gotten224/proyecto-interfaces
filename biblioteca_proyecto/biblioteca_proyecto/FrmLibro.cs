@@ -45,5 +45,15 @@ namespace biblioteca_proyecto
                 PbBusc.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\almacen.jpg";
             }
         }
+
+        private void comprobarNombre()
+        {
+
+        }
+
+
+
+
+
     }
 }

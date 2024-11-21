@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLibro));
             tabControl1 = new TabControl();
             TpAltaLibro = new TabPage();
@@ -37,41 +38,43 @@
             groupBox1 = new GroupBox();
             RbAlmacen = new RadioButton();
             RbSala = new RadioButton();
-            TbNombre = new TextBox();
+            TbTitulo = new TextBox();
             LbUbicacion = new Label();
             LbIdLibro = new Label();
-            LbNombreLibro = new Label();
+            LbNombreLibr = new Label();
             TpListar = new TabPage();
-            TpBuscar = new TabPage();
-            CbUbi = new ComboBox();
+            PbBorr = new PictureBox();
             LvListar = new ListView();
             id = new ColumnHeader();
             titulo = new ColumnHeader();
             ubicacion = new ColumnHeader();
-            PbBorr = new PictureBox();
-            BtnBusc = new Button();
-            TxtBusc = new TextBox();
-            PbBusc = new PictureBox();
+            CbUbi = new ComboBox();
+            TpBuscar = new TabPage();
+            PbModif = new PictureBox();
             mskTbIdBusc = new MaskedTextBox();
             groupBox2 = new GroupBox();
             RbAlmaBusc = new RadioButton();
             RbSalaBusc = new RadioButton();
-            TbNombreBusc = new TextBox();
+            TbtituloBusc = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            PbModif = new PictureBox();
+            PbBusc = new PictureBox();
+            BtnBusc = new Button();
+            TxtBusc = new TextBox();
+            errorProvider1 = new ErrorProvider(components);
             tabControl1.SuspendLayout();
             TpAltaLibro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PbUbicacion).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BtnAgragar).BeginInit();
             groupBox1.SuspendLayout();
             TpListar.SuspendLayout();
-            TpBuscar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PbBorr).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)PbBusc).BeginInit();
-            groupBox2.SuspendLayout();
+            TpBuscar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PbModif).BeginInit();
+            groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)PbBusc).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -91,10 +94,10 @@
             TpAltaLibro.Controls.Add(MtbIdLibro);
             TpAltaLibro.Controls.Add(BtnAgragar);
             TpAltaLibro.Controls.Add(groupBox1);
-            TpAltaLibro.Controls.Add(TbNombre);
+            TpAltaLibro.Controls.Add(TbTitulo);
             TpAltaLibro.Controls.Add(LbUbicacion);
             TpAltaLibro.Controls.Add(LbIdLibro);
-            TpAltaLibro.Controls.Add(LbNombreLibro);
+            TpAltaLibro.Controls.Add(LbNombreLibr);
             TpAltaLibro.Location = new Point(4, 24);
             TpAltaLibro.Name = "TpAltaLibro";
             TpAltaLibro.Padding = new Padding(3);
@@ -167,12 +170,12 @@
             RbSala.UseVisualStyleBackColor = true;
             RbSala.CheckedChanged += RbSala_CheckedChanged;
             // 
-            // TbNombre
+            // TbTitulo
             // 
-            TbNombre.Location = new Point(154, 99);
-            TbNombre.Name = "TbNombre";
-            TbNombre.Size = new Size(200, 23);
-            TbNombre.TabIndex = 14;
+            TbTitulo.Location = new Point(154, 99);
+            TbTitulo.Name = "TbTitulo";
+            TbTitulo.Size = new Size(200, 23);
+            TbTitulo.TabIndex = 14;
             // 
             // LbUbicacion
             // 
@@ -192,14 +195,14 @@
             LbIdLibro.TabIndex = 12;
             LbIdLibro.Text = "Identificador";
             // 
-            // LbNombreLibro
+            // LbNombreLibr
             // 
-            LbNombreLibro.AutoSize = true;
-            LbNombreLibro.Location = new Point(19, 110);
-            LbNombreLibro.Name = "LbNombreLibro";
-            LbNombreLibro.Size = new Size(51, 15);
-            LbNombreLibro.TabIndex = 10;
-            LbNombreLibro.Text = "Nombre";
+            LbNombreLibr.AutoSize = true;
+            LbNombreLibr.Location = new Point(19, 110);
+            LbNombreLibr.Name = "LbNombreLibr";
+            LbNombreLibr.Size = new Size(38, 15);
+            LbNombreLibr.TabIndex = 10;
+            LbNombreLibr.Text = "Titulo";
             // 
             // TpListar
             // 
@@ -214,34 +217,15 @@
             TpListar.Text = "Listado";
             TpListar.UseVisualStyleBackColor = true;
             // 
-            // TpBuscar
+            // PbBorr
             // 
-            TpBuscar.Controls.Add(PbModif);
-            TpBuscar.Controls.Add(mskTbIdBusc);
-            TpBuscar.Controls.Add(groupBox2);
-            TpBuscar.Controls.Add(TbNombreBusc);
-            TpBuscar.Controls.Add(label1);
-            TpBuscar.Controls.Add(label2);
-            TpBuscar.Controls.Add(label3);
-            TpBuscar.Controls.Add(PbBusc);
-            TpBuscar.Controls.Add(BtnBusc);
-            TpBuscar.Controls.Add(TxtBusc);
-            TpBuscar.Location = new Point(4, 24);
-            TpBuscar.Name = "TpBuscar";
-            TpBuscar.Padding = new Padding(3);
-            TpBuscar.Size = new Size(788, 430);
-            TpBuscar.TabIndex = 2;
-            TpBuscar.Text = "Buscar";
-            TpBuscar.UseVisualStyleBackColor = true;
-            // 
-            // CbUbi
-            // 
-            CbUbi.FormattingEnabled = true;
-            CbUbi.Items.AddRange(new object[] { "Sala", "Almacen" });
-            CbUbi.Location = new Point(6, 30);
-            CbUbi.Name = "CbUbi";
-            CbUbi.Size = new Size(262, 23);
-            CbUbi.TabIndex = 21;
+            PbBorr.Image = (Image)resources.GetObject("PbBorr.Image");
+            PbBorr.Location = new Point(702, 16);
+            PbBorr.Name = "PbBorr";
+            PbBorr.Size = new Size(44, 49);
+            PbBorr.SizeMode = PictureBoxSizeMode.StretchImage;
+            PbBorr.TabIndex = 23;
+            PbBorr.TabStop = false;
             // 
             // LvListar
             // 
@@ -267,40 +251,44 @@
             ubicacion.Text = "Ubicacion";
             ubicacion.Width = 120;
             // 
-            // PbBorr
+            // CbUbi
             // 
-            PbBorr.Image = (Image)resources.GetObject("PbBorr.Image");
-            PbBorr.Location = new Point(702, 16);
-            PbBorr.Name = "PbBorr";
-            PbBorr.Size = new Size(44, 49);
-            PbBorr.SizeMode = PictureBoxSizeMode.StretchImage;
-            PbBorr.TabIndex = 23;
-            PbBorr.TabStop = false;
+            CbUbi.FormattingEnabled = true;
+            CbUbi.Items.AddRange(new object[] { "Sala", "Almacen" });
+            CbUbi.Location = new Point(6, 30);
+            CbUbi.Name = "CbUbi";
+            CbUbi.Size = new Size(262, 23);
+            CbUbi.TabIndex = 21;
             // 
-            // BtnBusc
+            // TpBuscar
             // 
-            BtnBusc.Location = new Point(166, 19);
-            BtnBusc.Name = "BtnBusc";
-            BtnBusc.Size = new Size(75, 23);
-            BtnBusc.TabIndex = 34;
-            BtnBusc.Text = "Buscar";
-            BtnBusc.UseVisualStyleBackColor = true;
+            TpBuscar.Controls.Add(PbModif);
+            TpBuscar.Controls.Add(mskTbIdBusc);
+            TpBuscar.Controls.Add(groupBox2);
+            TpBuscar.Controls.Add(TbtituloBusc);
+            TpBuscar.Controls.Add(label1);
+            TpBuscar.Controls.Add(label2);
+            TpBuscar.Controls.Add(label3);
+            TpBuscar.Controls.Add(PbBusc);
+            TpBuscar.Controls.Add(BtnBusc);
+            TpBuscar.Controls.Add(TxtBusc);
+            TpBuscar.Location = new Point(4, 24);
+            TpBuscar.Name = "TpBuscar";
+            TpBuscar.Padding = new Padding(3);
+            TpBuscar.Size = new Size(788, 430);
+            TpBuscar.TabIndex = 2;
+            TpBuscar.Text = "Buscar";
+            TpBuscar.UseVisualStyleBackColor = true;
             // 
-            // TxtBusc
+            // PbModif
             // 
-            TxtBusc.Location = new Point(6, 19);
-            TxtBusc.Name = "TxtBusc";
-            TxtBusc.Size = new Size(154, 23);
-            TxtBusc.TabIndex = 33;
-            // 
-            // PbBusc
-            // 
-            PbBusc.Location = new Point(404, 6);
-            PbBusc.Name = "PbBusc";
-            PbBusc.Size = new Size(368, 402);
-            PbBusc.SizeMode = PictureBoxSizeMode.StretchImage;
-            PbBusc.TabIndex = 35;
-            PbBusc.TabStop = false;
+            PbModif.Image = (Image)resources.GetObject("PbModif.Image");
+            PbModif.Location = new Point(37, 366);
+            PbModif.Name = "PbModif";
+            PbModif.Size = new Size(41, 42);
+            PbModif.SizeMode = PictureBoxSizeMode.StretchImage;
+            PbModif.TabIndex = 42;
+            PbModif.TabStop = false;
             // 
             // mskTbIdBusc
             // 
@@ -345,12 +333,12 @@
             RbSalaBusc.UseVisualStyleBackColor = true;
             RbSalaBusc.CheckedChanged += RbSalaBusc_CheckedChanged;
             // 
-            // TbNombreBusc
+            // TbtituloBusc
             // 
-            TbNombreBusc.Location = new Point(162, 87);
-            TbNombreBusc.Name = "TbNombreBusc";
-            TbNombreBusc.Size = new Size(200, 23);
-            TbNombreBusc.TabIndex = 39;
+            TbtituloBusc.Location = new Point(162, 87);
+            TbtituloBusc.Name = "TbtituloBusc";
+            TbtituloBusc.Size = new Size(200, 23);
+            TbtituloBusc.TabIndex = 39;
             // 
             // label1
             // 
@@ -375,19 +363,38 @@
             label3.AutoSize = true;
             label3.Location = new Point(27, 98);
             label3.Name = "label3";
-            label3.Size = new Size(51, 15);
+            label3.Size = new Size(38, 15);
             label3.TabIndex = 36;
-            label3.Text = "Nombre";
+            label3.Text = "Titulo";
             // 
-            // PbModif
+            // PbBusc
             // 
-            PbModif.Image = (Image)resources.GetObject("PbModif.Image");
-            PbModif.Location = new Point(37, 366);
-            PbModif.Name = "PbModif";
-            PbModif.Size = new Size(41, 42);
-            PbModif.SizeMode = PictureBoxSizeMode.StretchImage;
-            PbModif.TabIndex = 42;
-            PbModif.TabStop = false;
+            PbBusc.Location = new Point(404, 6);
+            PbBusc.Name = "PbBusc";
+            PbBusc.Size = new Size(368, 402);
+            PbBusc.SizeMode = PictureBoxSizeMode.StretchImage;
+            PbBusc.TabIndex = 35;
+            PbBusc.TabStop = false;
+            // 
+            // BtnBusc
+            // 
+            BtnBusc.Location = new Point(166, 19);
+            BtnBusc.Name = "BtnBusc";
+            BtnBusc.Size = new Size(75, 23);
+            BtnBusc.TabIndex = 34;
+            BtnBusc.Text = "Buscar";
+            BtnBusc.UseVisualStyleBackColor = true;
+            // 
+            // TxtBusc
+            // 
+            TxtBusc.Location = new Point(6, 19);
+            TxtBusc.Name = "TxtBusc";
+            TxtBusc.Size = new Size(154, 23);
+            TxtBusc.TabIndex = 33;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
             // 
             // FrmLibro
             // 
@@ -405,13 +412,14 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             TpListar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)PbBorr).EndInit();
             TpBuscar.ResumeLayout(false);
             TpBuscar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)PbBorr).EndInit();
-            ((System.ComponentModel.ISupportInitialize)PbBusc).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PbModif).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)PbModif).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PbBusc).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
@@ -427,10 +435,10 @@
         private RadioButton RbPas;
         private RadioButton RbAlmacen;
         private RadioButton RbSala;
-        private TextBox TbNombre;
+        private TextBox TbTitulo;
         private Label LbUbicacion;
         private Label LbIdLibro;
-        private Label LbNombreLibro;
+        private Label LbNombreLibr;
         private TabPage TpListar;
         private TabPage TpBuscar;
         private ComboBox CbUbi;
@@ -446,10 +454,11 @@
         private GroupBox groupBox2;
         private RadioButton RbAlmaBusc;
         private RadioButton RbSalaBusc;
-        private TextBox TbNombreBusc;
+        private TextBox TbtituloBusc;
         private Label label1;
         private Label label2;
         private Label label3;
         private PictureBox PbModif;
+        private ErrorProvider errorProvider1;
     }
 }
