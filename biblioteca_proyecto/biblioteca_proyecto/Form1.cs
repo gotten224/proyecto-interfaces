@@ -35,7 +35,8 @@ namespace biblioteca_proyecto
             {
                 StreamReader pr = new StreamReader(Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\usuarios.txt", System.Text.Encoding.UTF8);
                 linea = pr.ReadLine();
-                while (linea != null) {
+                while (linea != null)
+                {
                     String[] spliteado2 = linea.Split(',');
                     String tipoYNombre = spliteado2[0].Trim();
                     String nombre = tipoYNombre.Substring(tipoYNombre.IndexOf(' ') + 1);
@@ -51,7 +52,8 @@ namespace biblioteca_proyecto
                             };
                             personas.Add(p);
                         }
-                        else {
+                        else
+                        {
                             Profesor p = new Profesor()
                             {
                                 Nombre = nombre,
@@ -59,7 +61,8 @@ namespace biblioteca_proyecto
                             };
                             personas.Add(p);
                         }
-                    } else if (linea.StartsWith("pas"))
+                    }
+                    else if (linea.StartsWith("pas"))
                     {
                         if (spliteado2.Length > 2)
                         {
@@ -82,7 +85,9 @@ namespace biblioteca_proyecto
                             personas.Add(pa);
                         }
 
-                    } else if (linea.StartsWith("alumno")){
+                    }
+                    else if (linea.StartsWith("alumno"))
+                    {
                         if (spliteado2.Length > 2)
                         {
                             Alumno a = new Alumno()
@@ -107,15 +112,18 @@ namespace biblioteca_proyecto
                 }
                 pr.Close();
             }
-            catch(Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
 
             //Bloque Libros
-            try {
+            try
+            {
                 StreamReader pr = new StreamReader(Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\libros.txt", System.Text.Encoding.UTF8);
                 linea = pr.ReadLine();
-                while (linea != null) {
+                while (linea != null)
+                {
                     String[] spliteado = linea.Split(',');
                     String titulo = spliteado[0].Trim();
                     String nombre = titulo.Substring(titulo.IndexOf(' ') + 1);
@@ -136,15 +144,17 @@ namespace biblioteca_proyecto
             }
 
             //Bloque Transacciones(En Desarrollo)
-            try {
+            try
+            {
                 StreamReader pr = new StreamReader(Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\libros.txt", System.Text.Encoding.UTF8);
                 linea = pr.ReadLine();
-                while (linea != null) {
+                while (linea != null)
+                {
                     linea = pr.ReadLine();
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -160,6 +170,18 @@ namespace biblioteca_proyecto
             }
 
             Form f = new FrmLibro();
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            foreach (Form i in this.MdiChildren)
+            {
+                i.Close();
+            }
+
+            Form f = new FrmTransaccion();
             f.MdiParent = this;
             f.Show();
         }
