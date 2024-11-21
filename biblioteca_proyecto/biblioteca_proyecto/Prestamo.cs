@@ -19,6 +19,12 @@ namespace biblioteca_proyecto
             this.fechaDevolucion = fechaDevolucion;
         }
 
+        public Prestamo(DateTime fechaTransaccion) : base(fechaTransaccion) {
+            this.persona = "";
+            this.libro = 0;
+            this.fechaDevolucion = DateTime.MinValue;
+        }
+
         public DateTime FechaDevolucion { get => fechaDevolucion; set => fechaDevolucion = value; }
         internal String Persona { get => persona; set => persona = value; }
         internal int Libro { get => libro; set => libro = value; }

@@ -15,6 +15,10 @@ namespace biblioteca_proyecto
             this.fechaTransaccion = fechaTransaccion;
         }
 
+        public Transaccion() {
+            this.fechaTransaccion = DateTime.MinValue;
+        }
+
         public DateTime FechaTransaccion { get => fechaTransaccion; set => fechaTransaccion = value; }
     }
 }
