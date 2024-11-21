@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmUsuario));
             tabControl1 = new TabControl();
             TpAlta = new TabPage();
@@ -38,8 +39,8 @@
             RbEstudinte = new RadioButton();
             RbPas = new RadioButton();
             RbProfesor = new RadioButton();
-            TbDepartamaento = new TextBox();
-            TbNombre = new TextBox();
+            TxtDepartamaento = new TextBox();
+            TxtNombre = new TextBox();
             LbTipo = new Label();
             LbFechSan = new Label();
             LbDepart = new Label();
@@ -48,6 +49,9 @@
             CbTipo = new ComboBox();
             PbBorr = new PictureBox();
             LvListar = new ListView();
+            Nombre = new ColumnHeader();
+            departamento = new ColumnHeader();
+            FechaSan = new ColumnHeader();
             TpBuscar = new TabPage();
             PbModif = new PictureBox();
             BtnBusc = new Button();
@@ -64,9 +68,7 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            Nombre = new ColumnHeader();
-            departamento = new ColumnHeader();
-            FechaSan = new ColumnHeader();
+            EpUsuario = new ErrorProvider(components);
             tabControl1.SuspendLayout();
             TpAlta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PbTipo).BeginInit();
@@ -78,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)PbModif).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PbBusc).BeginInit();
             GbBuscTip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)EpUsuario).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -97,8 +100,8 @@
             TpAlta.Controls.Add(MtbFechSan);
             TpAlta.Controls.Add(BtnAgregar);
             TpAlta.Controls.Add(groupBox1);
-            TpAlta.Controls.Add(TbDepartamaento);
-            TpAlta.Controls.Add(TbNombre);
+            TpAlta.Controls.Add(TxtDepartamaento);
+            TpAlta.Controls.Add(TxtNombre);
             TpAlta.Controls.Add(LbTipo);
             TpAlta.Controls.Add(LbFechSan);
             TpAlta.Controls.Add(LbDepart);
@@ -128,6 +131,7 @@
             MtbFechSan.Size = new Size(200, 23);
             MtbFechSan.TabIndex = 19;
             MtbFechSan.ValidatingType = typeof(DateTime);
+            MtbFechSan.Validated += MtbFechSan_Validated;
             // 
             // BtnAgregar
             // 
@@ -184,19 +188,21 @@
             RbProfesor.UseVisualStyleBackColor = true;
             RbProfesor.CheckedChanged += Rbtipo_CheckedChanged;
             // 
-            // TbDepartamaento
+            // TxtDepartamaento
             // 
-            TbDepartamaento.Location = new Point(154, 137);
-            TbDepartamaento.Name = "TbDepartamaento";
-            TbDepartamaento.Size = new Size(200, 23);
-            TbDepartamaento.TabIndex = 16;
+            TxtDepartamaento.Location = new Point(154, 137);
+            TxtDepartamaento.Name = "TxtDepartamaento";
+            TxtDepartamaento.Size = new Size(200, 23);
+            TxtDepartamaento.TabIndex = 16;
+            TxtDepartamaento.Validated += TxtDepartamaento_Validated;
             // 
-            // TbNombre
+            // TxtNombre
             // 
-            TbNombre.Location = new Point(154, 99);
-            TbNombre.Name = "TbNombre";
-            TbNombre.Size = new Size(200, 23);
-            TbNombre.TabIndex = 14;
+            TxtNombre.Location = new Point(154, 99);
+            TxtNombre.Name = "TxtNombre";
+            TxtNombre.Size = new Size(200, 23);
+            TxtNombre.TabIndex = 14;
+            TxtNombre.Validated += TxtNombre_Validated;
             // 
             // LbTipo
             // 
@@ -275,6 +281,21 @@
             LvListar.TabIndex = 0;
             LvListar.UseCompatibleStateImageBehavior = false;
             LvListar.View = View.Details;
+            // 
+            // Nombre
+            // 
+            Nombre.Text = "Nombre";
+            Nombre.Width = 250;
+            // 
+            // departamento
+            // 
+            departamento.Text = "Departamento";
+            departamento.Width = 250;
+            // 
+            // FechaSan
+            // 
+            FechaSan.Text = "Fecha de sancion";
+            FechaSan.Width = 270;
             // 
             // TpBuscar
             // 
@@ -436,20 +457,9 @@
             label4.TabIndex = 21;
             label4.Text = "Nombre";
             // 
-            // Nombre
+            // EpUsuario
             // 
-            Nombre.Text = "Nombre";
-            Nombre.Width = 250;
-            // 
-            // departamento
-            // 
-            departamento.Text = "Departamento";
-            departamento.Width = 250;
-            // 
-            // FechaSan
-            // 
-            FechaSan.Text = "Fecha de sancion";
-            FechaSan.Width = 270;
+            EpUsuario.ContainerControl = this;
             // 
             // FrmUsuario
             // 
@@ -475,6 +485,7 @@
             ((System.ComponentModel.ISupportInitialize)PbBusc).EndInit();
             GbBuscTip.ResumeLayout(false);
             GbBuscTip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)EpUsuario).EndInit();
             ResumeLayout(false);
         }
 
@@ -487,8 +498,8 @@
         private RadioButton RbEstudinte;
         private RadioButton RbPas;
         private RadioButton RbProfesor;
-        private TextBox TbDepartamaento;
-        private TextBox TbNombre;
+        private TextBox TxtDepartamaento;
+        private TextBox TxtNombre;
         private Label LbTipo;
         private Label LbFechSan;
         private Label LbDepart;
@@ -518,5 +529,6 @@
         private ColumnHeader Nombre;
         private ColumnHeader departamento;
         private ColumnHeader FechaSan;
+        private ErrorProvider EpUsuario;
     }
 }
