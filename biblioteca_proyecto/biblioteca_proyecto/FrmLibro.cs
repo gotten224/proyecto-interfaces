@@ -33,5 +33,17 @@ namespace biblioteca_proyecto
                 PbUbicacion.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\almacen.jpg";
             }
         }
+
+        private void RbSalaBusc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RbSalaBusc.Checked)
+            {
+                PbBusc.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\sala.jpg";
+            }
+            if (RbAlmaBusc.Checked)
+            {
+                PbBusc.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\almacen.jpg";
+            }
+        }
     }
 }
