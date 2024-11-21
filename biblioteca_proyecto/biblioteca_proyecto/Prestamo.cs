@@ -8,11 +8,11 @@ namespace biblioteca_proyecto
 {
     internal class Prestamo : Transaccion
     {
-        Persona persona;
-        Libro libro;
+        String persona;
+        int libro;
         DateTime fechaDevolucion;
 
-        public Prestamo(DateTime fechaTransaccion, Persona persona, Libro libro, DateTime fechaDevolucion) : base(fechaTransaccion)
+        public Prestamo(DateTime fechaTransaccion, String persona, int libro, DateTime fechaDevolucion) : base(fechaTransaccion)
         {
             this.persona = persona;
             this.libro = libro;
@@ -20,8 +20,8 @@ namespace biblioteca_proyecto
         }
 
         public DateTime FechaDevolucion { get => fechaDevolucion; set => fechaDevolucion = value; }
-        internal Persona Persona { get => persona; set => persona = value; }
-        internal Libro Libro { get => libro; set => libro = value; }
+        internal String Persona { get => persona; set => persona = value; }
+        internal int Libro { get => libro; set => libro = value; }
     }
 
 }

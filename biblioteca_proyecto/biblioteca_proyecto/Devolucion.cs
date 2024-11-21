@@ -8,13 +8,13 @@ namespace biblioteca_proyecto
 {
     internal class Devolucion : Transaccion
     {
-        Libro libro;
+        int libro;
 
-        public Devolucion(Libro libro, DateTime fechaTransaccion) : base(fechaTransaccion)
+        public Devolucion(int libro, DateTime fechaTransaccion) : base(fechaTransaccion)
         {
             this.libro = libro;
         }
 
-        internal Libro Libro { get => libro; set => libro = value; }
+        internal int Libro { get => libro; set => libro = value; }
     }
 }
