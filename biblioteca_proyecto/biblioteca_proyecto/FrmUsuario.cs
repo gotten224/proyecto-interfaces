@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -64,25 +65,51 @@ namespace biblioteca_proyecto
                 {
                     if (RbProfesor.Checked)
                     {
-                        String nombre;
-                        String dept;
+                        String nombre = TxtNombre.Text;
+                        String dept = TxtDepartamaento.Text;
                         if (MtbFechSan.MaskCompleted)
                         {
-                            DateTime fechsan;
+                            DateTime fechsan = Convert.ToDateTime(MtbFechSan.Text);
+                            Profesor profesor = new Profesor(nombre, dept, fechsan);
+                            Form1.personas.Add(profesor);
                         }
                         else
                         {
-                            Profesor profesor = new Profesor();
-                            Form1.pe
+                            Profesor profesor = new Profesor(nombre, dept);
+                            Form1.personas.Add(profesor);
                         }
                     }
                     else if (RbEstudinte.Checked)
                     {
-
+                        String nombre = TxtNombre.Text;
+                        String dept = TxtDepartamaento.Text;
+                        if (MtbFechSan.MaskCompleted)
+                        {
+                            DateTime fechsan = Convert.ToDateTime(MtbFechSan.Text);
+                            Alumno alumno = new Alumno(nombre, dept, fechsan);
+                            Form1.personas.Add(alumno);
+                        }
+                        else
+                        {
+                            Alumno alumno = new Alumno(nombre, dept);
+                            Form1.personas.Add(alumno);
+                        }
                     }
                     else if (RbPas.Checked)
                     {
-
+                        String nombre = TxtNombre.Text;
+                        String dept = TxtDepartamaento.Text;
+                        if (MtbFechSan.MaskCompleted)
+                        {
+                            DateTime fechsan = Convert.ToDateTime(MtbFechSan.Text);
+                            Pas pas = new Pas(nombre, dept, fechsan);
+                            Form1.personas.Add(pas);
+                        }
+                        else
+                        {
+                            Pas pas = new Pas(nombre, dept);
+                            Form1.personas.Add(pas);
+                        }
                     }
                 }
                 catch
@@ -92,7 +119,7 @@ namespace biblioteca_proyecto
             }
             else
             {
-                 MessageBox.Show("Nose ha podido guardar el usuario porque hay algun error");
+                MessageBox.Show("Nose ha podido guardar el usuario porque hay algun error");
             }
         }
 
@@ -123,14 +150,60 @@ namespace biblioteca_proyecto
         private void MtbFechSan_Validated(object sender, EventArgs e)
         {
             DateTime dateValue;
-            if(DateTime.TryParse(MtbFechSan.Text, out dateValue))
+            if (DateTime.TryParse(MtbFechSan.Text, out dateValue))
             {
                 EpUsuario.SetError(MtbFechSan, "El campo debe ser una fecha");
             }
-            
+
             else
             {
                 EpUsuario.SetError(MtbFechSan, "");
+            }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab.Text == "Listado")
+            {
+                foreach (Persona i in Form1.personas)
+                {
+                    if (i.GetType() == Type.GetType("Profesor"))
+                    {
+                        
+                    }
+                    else if (i.GetType() == Type.GetType("Alumno"))
+                    {
+                        String nombre = TxtNombre.Text;
+                        String dept = TxtDepartamaento.Text;
+                        if (MtbFechSan.MaskCompleted)
+                        {
+                            DateTime fechsan = Convert.ToDateTime(MtbFechSan.Text);
+                            Alumno alumno = new Alumno(nombre, dept, fechsan);
+                            Form1.personas.Add(alumno);
+                        }
+                        else
+                        {
+                            Alumno alumno = new Alumno(nombre, dept);
+                            Form1.personas.Add(alumno);
+                        }
+                    }
+                    else if (i.GetType() == Type.GetType("Pas"))
+                    {
+                        String nombre = TxtNombre.Text;
+                        String dept = TxtDepartamaento.Text;
+                        if (MtbFechSan.MaskCompleted)
+                        {
+                            DateTime fechsan = Convert.ToDateTime(MtbFechSan.Text);
+                            Pas pas = new Pas(nombre, dept, fechsan);
+                            Form1.personas.Add(pas);
+                        }
+                        else
+                        {
+                            Pas pas = new Pas(nombre, dept);
+                            Form1.personas.Add(pas);
+                        }
+                    }
+                }
             }
         }
     }
