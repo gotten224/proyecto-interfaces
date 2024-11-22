@@ -31,9 +31,7 @@ namespace biblioteca_proyecto
         }
 
         public Pas() {
-            this.Nombre = "";
-            this.Departamento = "";
-            this.FechaSancion = DateTime.MinValue;
+            
         }
 
     }
