@@ -78,6 +78,7 @@ namespace biblioteca_proyecto
                             Profesor profesor = new Profesor(nombre, dept);
                             Form1.personas.Add(profesor);
                         }
+                        MessageBox.Show("Profesor creado");
                     }
                     else if (RbEstudinte.Checked)
                     {
@@ -94,6 +95,7 @@ namespace biblioteca_proyecto
                             Alumno alumno = new Alumno(nombre, dept);
                             Form1.personas.Add(alumno);
                         }
+                        MessageBox.Show("Alumno creado");
                     }
                     else if (RbPas.Checked)
                     {
@@ -110,6 +112,7 @@ namespace biblioteca_proyecto
                             Pas pas = new Pas(nombre, dept);
                             Form1.personas.Add(pas);
                         }
+                        MessageBox.Show("Pas creado");
                     }
                 }
                 catch
@@ -125,7 +128,7 @@ namespace biblioteca_proyecto
 
         private void TxtNombre_Validated(object sender, EventArgs e)
         {
-            if (TxtNombre.Text != "")
+            if (TxtNombre.Text == "")
             {
                 EpUsuario.SetError(TxtNombre, "El campo debe estar relleno");
             }
@@ -137,7 +140,7 @@ namespace biblioteca_proyecto
 
         private void TxtDepartamaento_Validated(object sender, EventArgs e)
         {
-            if (TxtNombre.Text != "")
+            if (TxtNombre.Text == "")
             {
                 EpUsuario.SetError(TxtDepartamaento, "El campo debe estar relleno");
             }
@@ -165,6 +168,7 @@ namespace biblioteca_proyecto
         {
             if (tabControl1.SelectedTab.Text == "Listado")
             {
+                LvListar.Items.Clear();
                 foreach (Persona i in Form1.personas)
                 {
                     if (i.GetType() == Type.GetType("biblioteca_proyecto.Profesor"))
@@ -173,7 +177,7 @@ namespace biblioteca_proyecto
                         linea1 = LvListar.Items.Add("Profesor");
                         linea1.SubItems.Add(i.Nombre);
                         linea1.SubItems.Add(i.Departamento);
-                        if(i.FechaSancion != null)
+                        if (i.FechaSancion != null)
                         {
                             linea1.SubItems.Add(i.FechaSancion.ToString());
                         }
@@ -182,15 +186,74 @@ namespace biblioteca_proyecto
                             linea1.SubItems.Add("");
                         }
                     }
-                    else if (i.GetType() == Type.GetType("Alumno"))
+                    else if (i.GetType() == Type.GetType("biblioteca_proyecto.Alumno"))
                     {
-                        
+                        ListViewItem linea1;
+                        linea1 = LvListar.Items.Add("Alumno");
+                        linea1.SubItems.Add(i.Nombre);
+                        linea1.SubItems.Add(i.Departamento);
+                        if (i.FechaSancion != null)
+                        {
+                            linea1.SubItems.Add(i.FechaSancion.ToString());
+                        }
+                        else
+                        {
+                            linea1.SubItems.Add("");
+                        }
                     }
-                    else if (i.GetType() == Type.GetType("Pas"))
+                    else if (i.GetType() == Type.GetType("biblioteca_proyecto.Pas"))
                     {
-                        
+                        ListViewItem linea1;
+                        linea1 = LvListar.Items.Add("pas");
+                        linea1.SubItems.Add(i.Nombre);
+                        linea1.SubItems.Add(i.Departamento);
+                        if (i.FechaSancion != null)
+                        {
+                            linea1.SubItems.Add(i.FechaSancion.ToString());
+                        }
+                        else
+                        {
+                            linea1.SubItems.Add("");
+                        }
                     }
                 }
+            }
+        }
+
+        private void CbTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            LvListar.Items.Clear();
+            foreach (Persona i in Form1.personas)
+            {
+                if (i.GetType() == Type.GetType("biblioteca_proyecto." + CbTipo.SelectedItem.ToString()))
+                {
+                    ListViewItem linea1;
+                    linea1 = LvListar.Items.Add(CbTipo.SelectedItem.ToString());
+                    linea1.SubItems.Add(i.Nombre);
+                    linea1.SubItems.Add(i.Departamento);
+                    if (i.FechaSancion != null)
+                    {
+                        linea1.SubItems.Add(i.FechaSancion.ToString());
+                    }
+                    else
+                    {
+                        linea1.SubItems.Add("");
+                    }
+                }
+            }
+
+        }
+
+        private void PbBorr_Click(object sender, EventArgs e)
+        {
+            if (CbTipo.SelectedItem == null)
+            {
+                MessageBox.Show("Seleccione primero el usuario a eliminar en la lista");
+            }
+            else
+            {
+
             }
         }
     }
