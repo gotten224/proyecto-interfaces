@@ -258,11 +258,12 @@
             // CbUbi
             // 
             CbUbi.FormattingEnabled = true;
-            CbUbi.Items.AddRange(new object[] { "Sala", "Almacen" });
+            CbUbi.Items.AddRange(new object[] { "sala", "almacen" });
             CbUbi.Location = new Point(6, 30);
             CbUbi.Name = "CbUbi";
             CbUbi.Size = new Size(262, 23);
             CbUbi.TabIndex = 21;
+            CbUbi.SelectedIndexChanged += CbUbi_SelectedIndexChanged;
             // 
             // TpBuscar
             // 
