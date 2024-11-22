@@ -21,11 +21,25 @@ namespace biblioteca_proyecto
         {
             if (RbPrestamo.Checked) {
                 DateTime fechaActual = DateTime.Now;
-                Prestamo p = new Prestamo(fechaActual)
-                {
-                    Persona = TbNombre.Text,
-                    Libro = Convert.ToInt32(TxtIsbn.Text)
-                };
+                Prestamo p = new Prestamo(fechaActual);
+                Libro ls;
+                Persona pe;
+
+                foreach (Libro l in Form1.libros) {
+                    if (Convert.ToInt32(TxtIsbn.Text) == l.Id) {
+                        ls = l;
+                    }
+                }
+
+                foreach (Persona a in Form1.personas) {
+                    if (TbNombre.Text == a.Nombre) {
+                        pe = a;
+                    }
+                }
+                p.Libro = Convert.ToInt32(TxtIsbn.Text);
+                p.Persona = TbNombre.Text;
+                p.FechaDevolucion = pe.CalcularFechaDevolucion(ls,fechaActual);
+
             } else if (RbDevolucion.Checked) {
                 
             }
@@ -35,11 +49,13 @@ namespace biblioteca_proyecto
             if (RbDevolucion.Checked)
             {
                 PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\devult.png";
+                LbNombre.Visible = false;
                 TbNombre.Visible = false;
             }
             if (RbPrestamo.Checked)
             {
                 PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\prest.jpg";
+                LbNombre.Visible = false;
                 TbNombre.Visible = true;
             }
 
