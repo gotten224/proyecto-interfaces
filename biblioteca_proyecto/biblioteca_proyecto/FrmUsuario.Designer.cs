@@ -263,6 +263,7 @@
             CbTipo.Name = "CbTipo";
             CbTipo.Size = new Size(262, 23);
             CbTipo.TabIndex = 20;
+            CbTipo.SelectedIndexChanged += CbTipo_SelectedIndexChanged;
             // 
             // PbBorr
             // 
@@ -273,6 +274,7 @@
             PbBorr.SizeMode = PictureBoxSizeMode.StretchImage;
             PbBorr.TabIndex = 19;
             PbBorr.TabStop = false;
+            PbBorr.Click += PbBorr_Click;
             // 
             // LvListar
             // 
