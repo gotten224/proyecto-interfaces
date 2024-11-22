@@ -12,6 +12,7 @@ namespace biblioteca_proyecto
         List<Persona> personas = new List<Persona>();
         List<Libro> libros = new List<Libro>();
         List<Transaccion> transacciones = new List<Transaccion>();
+        List<Transaccion> transaccionesNuevas = new List<Transaccion>();
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
@@ -143,7 +144,7 @@ namespace biblioteca_proyecto
                 MessageBox.Show(ex.Message);
             }
 
-            //Bloque Transacciones(En Desarrollo)
+            //Bloque Transacciones
 
             try {
                 StreamReader pr = new StreamReader(Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\transacciones.txt", System.Text.Encoding.UTF8);
@@ -163,7 +164,7 @@ namespace biblioteca_proyecto
                     {
                         Prestamo p = new Prestamo(fecha)
                         {
-                            Persona = nombre + spliteado[2],
+                            Persona = nombre,
                             Libro = Convert.ToInt32(spliteado[1]),
                             FechaDevolucion = Convert.ToDateTime(spliteado[2])
                         };
