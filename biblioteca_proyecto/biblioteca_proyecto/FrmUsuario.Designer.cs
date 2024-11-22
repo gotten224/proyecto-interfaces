@@ -49,6 +49,7 @@
             CbTipo = new ComboBox();
             PbBorr = new PictureBox();
             LvListar = new ListView();
+            tipo = new ColumnHeader();
             Nombre = new ColumnHeader();
             departamento = new ColumnHeader();
             FechaSan = new ColumnHeader();
@@ -93,6 +94,7 @@
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(796, 458);
             tabControl1.TabIndex = 10;
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
             // TpAlta
             // 
@@ -160,9 +162,9 @@
             RbEstudinte.AutoSize = true;
             RbEstudinte.Location = new Point(20, 66);
             RbEstudinte.Name = "RbEstudinte";
-            RbEstudinte.Size = new Size(80, 19);
+            RbEstudinte.Size = new Size(68, 19);
             RbEstudinte.TabIndex = 2;
-            RbEstudinte.Text = "Estudiante";
+            RbEstudinte.Text = "Alumno";
             RbEstudinte.UseVisualStyleBackColor = true;
             RbEstudinte.CheckedChanged += Rbtipo_CheckedChanged;
             // 
@@ -256,7 +258,7 @@
             // CbTipo
             // 
             CbTipo.FormattingEnabled = true;
-            CbTipo.Items.AddRange(new object[] { "Estudiante", "Profesor", "Pas" });
+            CbTipo.Items.AddRange(new object[] { "Alumno", "Profesor", "Pas" });
             CbTipo.Location = new Point(10, 29);
             CbTipo.Name = "CbTipo";
             CbTipo.Size = new Size(262, 23);
@@ -274,7 +276,7 @@
             // 
             // LvListar
             // 
-            LvListar.Columns.AddRange(new ColumnHeader[] { Nombre, departamento, FechaSan });
+            LvListar.Columns.AddRange(new ColumnHeader[] { tipo, Nombre, departamento, FechaSan });
             LvListar.Location = new Point(6, 84);
             LvListar.Name = "LvListar";
             LvListar.Size = new Size(776, 336);
@@ -282,10 +284,15 @@
             LvListar.UseCompatibleStateImageBehavior = false;
             LvListar.View = View.Details;
             // 
+            // tipo
+            // 
+            tipo.Text = "Tipo";
+            tipo.Width = 110;
+            // 
             // Nombre
             // 
             Nombre.Text = "Nombre";
-            Nombre.Width = 250;
+            Nombre.Width = 200;
             // 
             // departamento
             // 
@@ -530,5 +537,6 @@
         private ColumnHeader departamento;
         private ColumnHeader FechaSan;
         private ErrorProvider EpUsuario;
+        private ColumnHeader tipo;
     }
 }
