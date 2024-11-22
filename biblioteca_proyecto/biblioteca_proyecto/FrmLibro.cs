@@ -29,7 +29,7 @@ namespace biblioteca_proyecto
             }
             foreach (Libro l in Form1.libros)
             {
-                if(l.Id == Int32.Parse(MtbIdLibro.Text))
+                if (l.Id == Int32.Parse(MtbIdLibro.Text))
                 {
                     error = true;
                 }
@@ -46,7 +46,8 @@ namespace biblioteca_proyecto
                         string tipo = "sala";
                         Libro libro = new Libro(tipo, titulo, id);
                         Form1.libros.Add(libro);
-                    }else if (RbAlmacen.Checked)
+                    }
+                    else if (RbAlmacen.Checked)
                     {
                         string titulo = TbTitulo.Text;
                         int id = Int32.Parse(MtbIdLibro.Text);
@@ -121,6 +122,17 @@ namespace biblioteca_proyecto
         private void BtnAgragar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(tabControl1.SelectedTab.Text == "Listado")
+            {
+                foreach(Libro l in Form1.libros)
+                {
+
+                }
+            }
         }
     }
 }
