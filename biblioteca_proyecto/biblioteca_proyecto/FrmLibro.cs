@@ -46,14 +46,22 @@ namespace biblioteca_proyecto
             }
         }
 
-        private void comprobarNombre()
+
+        private void TbTitulo_Validated(object sender, EventArgs e)
+        {
+            if (TbTitulo.Text != "")
+            {
+                EpLibro.SetError(TbTitulo, "El campo debe estar relleno");
+            }
+            else
+            {
+                EpLibro.SetError(TbTitulo, "");
+            }
+        }
+
+        private void MtbIdLibro_Validated(object sender, EventArgs e)
         {
 
         }
-
-
-
-
-
     }
 }

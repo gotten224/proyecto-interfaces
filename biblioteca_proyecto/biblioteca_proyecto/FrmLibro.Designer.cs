@@ -62,7 +62,7 @@
             PbBusc = new PictureBox();
             BtnBusc = new Button();
             TxtBusc = new TextBox();
-            errorProvider1 = new ErrorProvider(components);
+            EpLibro = new ErrorProvider(components);
             tabControl1.SuspendLayout();
             TpAltaLibro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PbUbicacion).BeginInit();
@@ -74,7 +74,7 @@
             ((System.ComponentModel.ISupportInitialize)PbModif).BeginInit();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PbBusc).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)EpLibro).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -119,11 +119,12 @@
             // MtbIdLibro
             // 
             MtbIdLibro.Location = new Point(154, 164);
-            MtbIdLibro.Mask = "99999";
+            MtbIdLibro.Mask = "9999";
             MtbIdLibro.Name = "MtbIdLibro";
             MtbIdLibro.Size = new Size(200, 23);
             MtbIdLibro.TabIndex = 19;
             MtbIdLibro.ValidatingType = typeof(int);
+            MtbIdLibro.Validated += MtbIdLibro_Validated;
             // 
             // BtnAgragar
             // 
@@ -176,6 +177,7 @@
             TbTitulo.Name = "TbTitulo";
             TbTitulo.Size = new Size(200, 23);
             TbTitulo.TabIndex = 14;
+            TbTitulo.Validated += TbTitulo_Validated;
             // 
             // LbUbicacion
             // 
@@ -392,9 +394,9 @@
             TxtBusc.Size = new Size(154, 23);
             TxtBusc.TabIndex = 33;
             // 
-            // errorProvider1
+            // EpLibro
             // 
-            errorProvider1.ContainerControl = this;
+            EpLibro.ContainerControl = this;
             // 
             // FrmLibro
             // 
@@ -419,7 +421,7 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PbBusc).EndInit();
-            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)EpLibro).EndInit();
             ResumeLayout(false);
         }
 
@@ -459,6 +461,6 @@
         private Label label2;
         private Label label3;
         private PictureBox PbModif;
-        private ErrorProvider errorProvider1;
+        private ErrorProvider EpLibro;
     }
 }
