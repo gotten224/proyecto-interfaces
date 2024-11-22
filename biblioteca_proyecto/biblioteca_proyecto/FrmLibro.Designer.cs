@@ -135,6 +135,7 @@
             BtnAgragar.SizeMode = PictureBoxSizeMode.StretchImage;
             BtnAgragar.TabIndex = 18;
             BtnAgragar.TabStop = false;
+            BtnAgragar.Click += BtnAgragar_Click;
             // 
             // groupBox1
             // 
