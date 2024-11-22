@@ -167,41 +167,28 @@ namespace biblioteca_proyecto
             {
                 foreach (Persona i in Form1.personas)
                 {
-                    if (i.GetType() == Type.GetType("Profesor"))
+                    if (i.GetType() == Type.GetType("biblioteca_proyecto.Profesor"))
                     {
-                        
+                        ListViewItem linea1;
+                        linea1 = LvListar.Items.Add("Profesor");
+                        linea1.SubItems.Add(i.Nombre);
+                        linea1.SubItems.Add(i.Departamento);
+                        if(i.FechaSancion != null)
+                        {
+                            linea1.SubItems.Add(i.FechaSancion.ToString());
+                        }
+                        else
+                        {
+                            linea1.SubItems.Add("");
+                        }
                     }
                     else if (i.GetType() == Type.GetType("Alumno"))
                     {
-                        String nombre = TxtNombre.Text;
-                        String dept = TxtDepartamaento.Text;
-                        if (MtbFechSan.MaskCompleted)
-                        {
-                            DateTime fechsan = Convert.ToDateTime(MtbFechSan.Text);
-                            Alumno alumno = new Alumno(nombre, dept, fechsan);
-                            Form1.personas.Add(alumno);
-                        }
-                        else
-                        {
-                            Alumno alumno = new Alumno(nombre, dept);
-                            Form1.personas.Add(alumno);
-                        }
+                        
                     }
                     else if (i.GetType() == Type.GetType("Pas"))
                     {
-                        String nombre = TxtNombre.Text;
-                        String dept = TxtDepartamaento.Text;
-                        if (MtbFechSan.MaskCompleted)
-                        {
-                            DateTime fechsan = Convert.ToDateTime(MtbFechSan.Text);
-                            Pas pas = new Pas(nombre, dept, fechsan);
-                            Form1.personas.Add(pas);
-                        }
-                        else
-                        {
-                            Pas pas = new Pas(nombre, dept);
-                            Form1.personas.Add(pas);
-                        }
+                        
                     }
                 }
             }

@@ -10,12 +10,13 @@ namespace biblioteca_proyecto
     {
         String nombre;
         String departamento;
-        DateTime fechaSancion;
+        DateTime ? fechaSancion;
 
         public Persona(string nombre, string departamento)
         {
             this.nombre = nombre;
             this.departamento = departamento;
+            fechaSancion = null;
         }
 
         public Persona(string nombre, string departamento, DateTime fechaSancion) : this(nombre, departamento)
@@ -28,12 +29,12 @@ namespace biblioteca_proyecto
         public Persona() {
             this.Nombre = "";
             this.Departamento = "";
-            this.FechaSancion = DateTime.MinValue;
+            fechaSancion=null;
         }
 
         public string Nombre { get => nombre; set => nombre = value; }
         public string Departamento { get => departamento; set => departamento = value; }
-        public DateTime FechaSancion { get => fechaSancion; set => fechaSancion = value; }
+        public DateTime? FechaSancion { get => fechaSancion; set => fechaSancion = value; }
 
         public DateTime CalcularFechaDevolucion()
         {
