@@ -208,7 +208,7 @@ namespace biblioteca_proyecto
                 i.Close();
             }
 
-            Form f = new FrmTransaccion();
+            Form f = new FrmPrestamo();
             f.MdiParent = this;
             f.Show();
         }
