@@ -87,6 +87,7 @@
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(796, 458);
             tabControl1.TabIndex = 11;
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
             // TpAltaLibro
             // 
