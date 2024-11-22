@@ -40,9 +40,7 @@ namespace biblioteca_proyecto
         }
 
         public Alumno() {
-            this.Nombre = "";
-            this.Departamento = "";
-            this.FechaSancion = DateTime.MinValue;
+            
         }
 
 

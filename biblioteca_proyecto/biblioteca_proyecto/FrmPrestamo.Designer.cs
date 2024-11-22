@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrestamo));
             tabControl1 = new TabControl();
             TpAlta = new TabPage();
             PbTipo = new PictureBox();
-            MtbFechDev = new MaskedTextBox();
             BtnAgregar = new PictureBox();
             groupBox1 = new GroupBox();
             RbDevolucion = new RadioButton();
@@ -40,7 +40,6 @@
             TxtIsbn = new TextBox();
             TbNombre = new TextBox();
             LbTipo = new Label();
-            LbFechSan = new Label();
             LbDepart = new Label();
             LbNombre = new Label();
             TpListar = new TabPage();
@@ -65,6 +64,7 @@
             label2 = new Label();
             label4 = new Label();
             label3 = new Label();
+            epTransacciones = new ErrorProvider(components);
             tabControl1.SuspendLayout();
             TpAlta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PbTipo).BeginInit();
@@ -76,6 +76,7 @@
             ((System.ComponentModel.ISupportInitialize)PbModif).BeginInit();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PbBusc).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)epTransacciones).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -92,13 +93,11 @@
             // TpAlta
             // 
             TpAlta.Controls.Add(PbTipo);
-            TpAlta.Controls.Add(MtbFechDev);
             TpAlta.Controls.Add(BtnAgregar);
             TpAlta.Controls.Add(groupBox1);
             TpAlta.Controls.Add(TxtIsbn);
             TpAlta.Controls.Add(TbNombre);
             TpAlta.Controls.Add(LbTipo);
-            TpAlta.Controls.Add(LbFechSan);
             TpAlta.Controls.Add(LbDepart);
             TpAlta.Controls.Add(LbNombre);
             TpAlta.Location = new Point(4, 24);
@@ -108,6 +107,7 @@
             TpAlta.TabIndex = 0;
             TpAlta.Text = "Alta";
             TpAlta.UseVisualStyleBackColor = true;
+            TpAlta.Click += TpAlta_Click;
             // 
             // PbTipo
             // 
@@ -117,15 +117,6 @@
             PbTipo.SizeMode = PictureBoxSizeMode.StretchImage;
             PbTipo.TabIndex = 20;
             PbTipo.TabStop = false;
-            // 
-            // MtbFechDev
-            // 
-            MtbFechDev.Location = new Point(154, 187);
-            MtbFechDev.Mask = "00/00/0000";
-            MtbFechDev.Name = "MtbFechDev";
-            MtbFechDev.Size = new Size(200, 23);
-            MtbFechDev.TabIndex = 19;
-            MtbFechDev.ValidatingType = typeof(DateTime);
             // 
             // BtnAgregar
             // 
@@ -176,6 +167,7 @@
             TxtIsbn.Name = "TxtIsbn";
             TxtIsbn.Size = new Size(200, 23);
             TxtIsbn.TabIndex = 16;
+            TxtIsbn.Validated += TxtIsbn_Validated;
             // 
             // TbNombre
             // 
@@ -183,6 +175,7 @@
             TbNombre.Name = "TbNombre";
             TbNombre.Size = new Size(200, 23);
             TbNombre.TabIndex = 14;
+            TbNombre.Validating += TbNombre_Validating;
             // 
             // LbTipo
             // 
@@ -192,15 +185,6 @@
             LbTipo.Size = new Size(31, 15);
             LbTipo.TabIndex = 13;
             LbTipo.Text = "Tipo";
-            // 
-            // LbFechSan
-            // 
-            LbFechSan.AutoSize = true;
-            LbFechSan.Location = new Point(19, 190);
-            LbFechSan.Name = "LbFechSan";
-            LbFechSan.Size = new Size(116, 15);
-            LbFechSan.TabIndex = 12;
-            LbFechSan.Text = "Fecha de devulucion";
             // 
             // LbDepart
             // 
@@ -425,6 +409,10 @@
             label3.TabIndex = 21;
             label3.Text = "ISBN libro";
             // 
+            // epTransacciones
+            // 
+            epTransacciones.ContainerControl = this;
+            // 
             // FrmPrestamo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -448,6 +436,7 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PbBusc).EndInit();
+            ((System.ComponentModel.ISupportInitialize)epTransacciones).EndInit();
             ResumeLayout(false);
         }
 
@@ -456,7 +445,6 @@
         private TabControl tabControl1;
         private TabPage TpAlta;
         private PictureBox PbTipo;
-        private MaskedTextBox MtbFechDev;
         private PictureBox BtnAgregar;
         private GroupBox groupBox1;
         private RadioButton RbDevolucion;
@@ -464,7 +452,6 @@
         private TextBox TxtIsbn;
         private TextBox TbNombre;
         private Label LbTipo;
-        private Label LbFechSan;
         private Label LbDepart;
         private Label LbNombre;
         private TabPage TpListar;
@@ -489,5 +476,6 @@
         private Label label2;
         private Label label4;
         private Label label3;
+        private ErrorProvider epTransacciones;
     }
 }

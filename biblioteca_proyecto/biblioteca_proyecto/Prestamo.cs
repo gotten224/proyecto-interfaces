@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace biblioteca_proyecto
+﻿namespace biblioteca_proyecto
 {
     internal class Prestamo : Transaccion
     {
@@ -19,7 +13,8 @@ namespace biblioteca_proyecto
             this.fechaDevolucion = fechaDevolucion;
         }
 
-        public Prestamo(DateTime fechaTransaccion) : base(fechaTransaccion) {
+        public Prestamo(DateTime fechaTransaccion) : base(fechaTransaccion)
+        {
             this.persona = "";
             this.libro = 0;
             this.fechaDevolucion = DateTime.MinValue;

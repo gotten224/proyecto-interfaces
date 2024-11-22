@@ -41,9 +41,7 @@ namespace biblioteca_proyecto
 
 
         public Profesor() {
-            this.Nombre = "";
-            this.Departamento = "";
-            this.FechaSancion = DateTime.MinValue;
+            
         }
 
 
