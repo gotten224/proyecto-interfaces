@@ -9,9 +9,9 @@ namespace biblioteca_proyecto
             InitializeComponent();
         }
 
-        List<Persona> personas = new List<Persona>();
-        List<Libro> libros = new List<Libro>();
-        List<Transaccion> transacciones = new List<Transaccion>();
+        internal static List<Persona> personas = new List<Persona>();
+        internal static List<Libro> libros = new List<Libro>();
+        internal static List<Transaccion> transacciones = new List<Transaccion>();
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
