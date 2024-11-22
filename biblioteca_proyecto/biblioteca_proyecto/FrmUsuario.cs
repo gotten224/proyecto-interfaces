@@ -80,14 +80,11 @@ namespace biblioteca_proyecto
         private void MtbFechSan_Validated(object sender, EventArgs e)
         {
             DateTime dateValue;
-            if (!MtbFechSan.MaskCompleted)
+            if(DateTime.TryParse(MtbFechSan.Text, out dateValue))
             {
-                EpUsuario.SetError(MtbFechSan, "El campo debe estar relleno");
-                if(DateTime.TryParse(MtbFechSan.Text, out dateValue))
-                {
-                    EpUsuario.SetError(MtbFechSan, "El campo debe ser una fecha");
-                }
+                EpUsuario.SetError(MtbFechSan, "El campo debe ser una fecha");
             }
+            
             else
             {
                 EpUsuario.SetError(MtbFechSan, "");
