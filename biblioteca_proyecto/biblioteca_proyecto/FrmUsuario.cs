@@ -50,7 +50,50 @@ namespace biblioteca_proyecto
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
+            bool error = false;
+            foreach (Control i in tabControl1.SelectedTab.Controls)
+            {
+                if (EpUsuario.GetError(i) != "")
+                {
+                    error = true;
+                }
+            }
+            if (!error)
+            {
+                try
+                {
+                    if (RbProfesor.Checked)
+                    {
+                        String nombre;
+                        String dept;
+                        if (MtbFechSan.MaskCompleted)
+                        {
+                            DateTime fechsan;
+                        }
+                        else
+                        {
+                            Profesor profesor = new Profesor();
+                            Form1.pe
+                        }
+                    }
+                    else if (RbEstudinte.Checked)
+                    {
 
+                    }
+                    else if (RbPas.Checked)
+                    {
+
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("No se ha podido guardar el cliente");
+                }
+            }
+            else
+            {
+                 MessageBox.Show("Nose ha podido guardar el usuario porque hay algun error");
+            }
         }
 
         private void TxtNombre_Validated(object sender, EventArgs e)
