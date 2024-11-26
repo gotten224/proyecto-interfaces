@@ -17,31 +17,85 @@ namespace biblioteca_proyecto
             InitializeComponent();
         }
 
+
+        //Alta de Prestamos y Devoluciones
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-            if (RbPrestamo.Checked) {
-                DateTime fechaActual = DateTime.Now;
+            DateTime fechaActual = DateTime.Now;
+            if (RbPrestamo.Checked)
+            {
+                DateTime FechaDevolucion = DateTime.MinValue;
                 Prestamo p = new Prestamo(fechaActual);
-                Libro ls;
-                Persona pe;
-
-                foreach (Libro l in Form1.libros) {
-                    if (Convert.ToInt32(TxtIsbn.Text) == l.Id) {
+                Libro ls = new Libro();
+                Persona pe = new Persona();
+                //Se busca el libro en la Coleccion de Libros
+                foreach (Libro l in Form1.libros)
+                {
+                    if (Convert.ToInt32(TxtIsbn.Text) == l.Id)
+                    {
                         ls = l;
                     }
                 }
 
-                foreach (Persona a in Form1.personas) {
-                    if (TbNombre.Text == a.Nombre) {
+                p.Libro = ls.Id;
+                //Se busca la Persona en la Coleccion de Personas
+                foreach (Persona a in Form1.personas)
+                {
+                    if (TbNombre.Text == a.Nombre)
+                    {
                         pe = a;
+                        //Buscamos el tipo de la Persona seleccionada para calcular su Fecha de Devolucion
+                        if (a.GetType() == Type.GetType("biblioteca_proyecto.Profesor"))
+                        {
+                            Profesor pr = new Profesor();
+                            pr.Nombre = a.Nombre;
+                            pr.Departamento = a.Departamento;
+                            pr.FechaSancion = a.FechaSancion;
+                            p.Persona = pr.Nombre;
+                            FechaDevolucion = pr.CalcularFechaDevolucion(ls, fechaActual);
+                        }
+                        else if (a.GetType() == Type.GetType("biblioteca_proyecto.Pas"))
+                        {
+                            Pas pas = new Pas()
+                            {
+                                Nombre = a.Nombre,
+                                Departamento = a.Departamento,
+                                FechaSancion = a.FechaSancion
+                            };
+                            p.Persona = pas.Nombre;
+                            FechaDevolucion = pas.CalcularFechaDevolucion(ls, fechaActual);
+                        }
+                        else if (a.GetType() == Type.GetType("biblioteca_proyecto.Alumno"))
+                        {
+                            Alumno alum = new Alumno()
+                            {
+                                Nombre = a.Nombre,
+                                Departamento = a.Departamento,
+                                FechaSancion = a.FechaSancion
+                            };
+                            p.Persona = alum.Nombre;
+                            FechaDevolucion = alum.CalcularFechaDevolucion(ls, fechaActual);
+                        }
                     }
                 }
-                p.Libro = Convert.ToInt32(TxtIsbn.Text);
-                p.Persona = TbNombre.Text;
-                p.FechaDevolucion = pe.CalcularFechaDevolucion(ls,fechaActual);
+                p.FechaDevolucion = FechaDevolucion;
+                MessageBox.Show("Prestamo Creado");
 
-            } else if (RbDevolucion.Checked) {
-                
+            }
+            else if (RbDevolucion.Checked)
+            {
+                Libro ls = new Libro();
+                Devolucion d = new Devolucion(fechaActual);
+                foreach (Libro l in Form1.libros)
+                {
+                    if (Convert.ToInt32(TxtIsbn.Text) == l.Id)
+                    {
+                        ls = l;
+                    }
+                }
+
+                d.Libro = ls.Id;
+                MessageBox.Show("Devolucion Creada");
             }
         }
         private void Rbtipo_CheckedChanged(object sender, EventArgs e)
@@ -55,7 +109,7 @@ namespace biblioteca_proyecto
             if (RbPrestamo.Checked)
             {
                 PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\prest.jpg";
-                LbNombre.Visible = false;
+                LbNombre.Visible = true;
                 TbNombre.Visible = true;
             }
 
@@ -99,6 +153,78 @@ namespace biblioteca_proyecto
             else
             {
                 epTransacciones.Clear();
+            }
+        }
+
+        private void CbTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LvListar.Items.Clear();
+            /*switch (CbTipo.SelectedItem.ToString())
+            {
+                case "Prestamo":
+                    MessageBox.Show("1");
+                    foreach (Transaccion i in Form1.transacciones) {
+                        if (i.GetType() == Type.GetType("biblioteca_proyecto")) {
+                            MessageBox.Show("Estoy dentro");
+                            ListViewItem linea = LvListar.Items.Add("Prestamo");
+                            linea.SubItems.Add(Convert.ToString(i.Libro));
+                            linea.SubItems.Add(i.Persona);
+                            linea.SubItems.Add(Convert.ToString(i.FechaDevolucion));
+                        }
+                    }
+                    break;
+                case "Devolucion":
+                    foreach (Devolucion i in Form1.transacciones)
+                    {
+                        if (i.GetType() == Type.GetType("biblioteca_proyecto.Devolucion"))
+                        {
+                            ListViewItem linea = LvListar.Items.Add("Devolucion");
+                            linea.SubItems.Add(Convert.ToString(i.Libro));
+                        }
+                    }
+                    break;
+                default:
+                    foreach (Transaccion i in Form1.transacciones) {
+                        if (i.GetType() == Type.GetType("biblioteca_proyecto.Prestamo"))
+                        {
+                            Prestamo p = (Prestamo)i;
+                            ListViewItem linea = LvListar.Items.Add("Prestamo");
+                            linea.SubItems.Add(Convert.ToString(p.Libro));
+                            linea.SubItems.Add(p.Persona);
+                            linea.SubItems.Add(Convert.ToString(p.FechaDevolucion));
+                        }
+
+                        if (i.GetType() == Type.GetType("biblioteca_proyecto.Devolucion"))
+                        {
+                            Devolucion d = (Devolucion)i;
+                            ListViewItem linea = LvListar.Items.Add("Devolucion");
+                            linea.SubItems.Add(Convert.ToString(d.Libro));
+                        }
+                    }
+                    break;
+            }*/
+            foreach (Transaccion i in Form1.transacciones) {
+                if (i.GetType() == Type.GetType("biblioteca_proyecto." + CbTipo.SelectedItem.ToString()))
+                {
+                    switch (CbTipo.SelectedItem.ToString()) {
+                        case "Prestamo":
+                            Prestamo p = (Prestamo)i;
+                            ListViewItem linea = LvListar.Items.Add("Prestamo");
+                            linea.SubItems.Add(Convert.ToString(p.Libro));
+                            linea.SubItems.Add(p.Persona);
+                            linea.SubItems.Add(Convert.ToString(p.FechaDevolucion));
+                            break;
+
+                        case "Devolucion":
+                            Devolucion d = (Devolucion)i;
+                            ListViewItem linea2 = LvListar.Items.Add("Devolucion");
+                            linea2.SubItems.Add(Convert.ToString(d.Libro));
+                            linea2.SubItems.Add("");
+                            linea2.SubItems.Add("");
+                            break;
+                    }
+
+                }
             }
         }
     }
