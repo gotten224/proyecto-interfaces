@@ -148,10 +148,12 @@ namespace biblioteca_proyecto
 
             //Bloque Transacciones
 
-            try {
+            try
+            {
                 StreamReader pr = new StreamReader(Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\transacciones.txt", System.Text.Encoding.UTF8);
                 linea = pr.ReadLine();
-                while (linea != null) {
+                while (linea != null)
+                {
                     String[] spliteado = linea.Split(",");
                     String tipoYNombre = spliteado[0].Trim();
                     String[] prestamos = linea.Split(" ");
@@ -160,7 +162,7 @@ namespace biblioteca_proyecto
                     if (linea.StartsWith("fecha"))
                     {
                         fecha = Convert.ToDateTime(nombre + spliteado[1] + spliteado[2]);
- 
+
                     }
                     else if (linea.StartsWith("prestamo"))
                     {
@@ -170,7 +172,8 @@ namespace biblioteca_proyecto
                             Libro = Convert.ToInt32(spliteado[1]),
                             FechaDevolucion = Convert.ToDateTime(spliteado[2])
                         };
-                    }else if (linea.StartsWith("devolucion"))
+                    }
+                    else if (linea.StartsWith("devolucion"))
                     {
                         Devolucion d = new Devolucion(fecha)
                         {
@@ -214,6 +217,25 @@ namespace biblioteca_proyecto
             Form f = new FrmPrestamo();
             f.MdiParent = this;
             f.Show();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SobreescribirLibros();
+        }
+
+        private void SobreescribirLibros()
+        {
+            String path = ".\\..\\..\\..\\..\\Properties\\libros.txt";
+            StreamWriter streamOut = new StreamWriter(path);
+            foreach (Libro l in libros)
+            {
+                streamOut.WriteLine(l.Tipo + " " + l.Titulo + ", " + l.Id.ToString());
+            }
+            streamOut.Close();
+            MessageBox.Show("Los libros se han guardado correctamente");
+
+
         }
     }
 }
