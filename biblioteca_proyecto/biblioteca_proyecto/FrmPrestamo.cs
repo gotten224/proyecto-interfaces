@@ -38,7 +38,7 @@ namespace biblioteca_proyecto
                 }
                 p.Libro = Convert.ToInt32(TxtIsbn.Text);
                 p.Persona = TbNombre.Text;
-                p.FechaDevolucion = pe.CalcularFechaDevolucion(ls,fechaActual);
+                //p.FechaDevolucion = pe.CalcularFechaDevolucion(ls,fechaActual);
 
             } else if (RbDevolucion.Checked) {
                 

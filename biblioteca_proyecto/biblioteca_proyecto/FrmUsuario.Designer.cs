@@ -58,7 +58,7 @@
             BtnBusc = new Button();
             TxtBusc = new TextBox();
             PbBusc = new PictureBox();
-            TxtBuscFech = new MaskedTextBox();
+            MtbBuscFech = new MaskedTextBox();
             GbBuscTip = new GroupBox();
             RbBuscEstu = new RadioButton();
             RbBuscPas = new RadioButton();
@@ -312,7 +312,7 @@
             TpBuscar.Controls.Add(BtnBusc);
             TpBuscar.Controls.Add(TxtBusc);
             TpBuscar.Controls.Add(PbBusc);
-            TpBuscar.Controls.Add(TxtBuscFech);
+            TpBuscar.Controls.Add(MtbBuscFech);
             TpBuscar.Controls.Add(GbBuscTip);
             TpBuscar.Controls.Add(TxtBuscDept);
             TpBuscar.Controls.Add(TxtBuscNom);
@@ -337,6 +337,7 @@
             PbModif.SizeMode = PictureBoxSizeMode.StretchImage;
             PbModif.TabIndex = 33;
             PbModif.TabStop = false;
+            PbModif.Click += PbModif_Click;
             // 
             // BtnBusc
             // 
@@ -346,6 +347,7 @@
             BtnBusc.TabIndex = 32;
             BtnBusc.Text = "Buscar";
             BtnBusc.UseVisualStyleBackColor = true;
+            BtnBusc.Click += BtnBusc_Click;
             // 
             // TxtBusc
             // 
@@ -363,14 +365,15 @@
             PbBusc.TabIndex = 30;
             PbBusc.TabStop = false;
             // 
-            // TxtBuscFech
+            // MtbBuscFech
             // 
-            TxtBuscFech.Location = new Point(158, 175);
-            TxtBuscFech.Mask = "00/00/0000";
-            TxtBuscFech.Name = "TxtBuscFech";
-            TxtBuscFech.Size = new Size(200, 23);
-            TxtBuscFech.TabIndex = 29;
-            TxtBuscFech.ValidatingType = typeof(DateTime);
+            MtbBuscFech.Location = new Point(158, 175);
+            MtbBuscFech.Mask = "00/00/0000";
+            MtbBuscFech.Name = "MtbBuscFech";
+            MtbBuscFech.Size = new Size(200, 23);
+            MtbBuscFech.TabIndex = 29;
+            MtbBuscFech.ValidatingType = typeof(DateTime);
+            MtbBuscFech.Validated += MtbBuscFech_Validated;
             // 
             // GbBuscTip
             // 
@@ -386,6 +389,7 @@
             // RbBuscEstu
             // 
             RbBuscEstu.AutoSize = true;
+            RbBuscEstu.Enabled = false;
             RbBuscEstu.Location = new Point(20, 66);
             RbBuscEstu.Name = "RbBuscEstu";
             RbBuscEstu.Size = new Size(80, 19);
@@ -397,6 +401,7 @@
             // RbBuscPas
             // 
             RbBuscPas.AutoSize = true;
+            RbBuscPas.Enabled = false;
             RbBuscPas.Location = new Point(20, 41);
             RbBuscPas.Name = "RbBuscPas";
             RbBuscPas.Size = new Size(43, 19);
@@ -408,6 +413,7 @@
             // RbBuscProf
             // 
             RbBuscProf.AutoSize = true;
+            RbBuscProf.Enabled = false;
             RbBuscProf.Location = new Point(20, 16);
             RbBuscProf.Name = "RbBuscProf";
             RbBuscProf.Size = new Size(69, 19);
@@ -422,9 +428,11 @@
             TxtBuscDept.Name = "TxtBuscDept";
             TxtBuscDept.Size = new Size(200, 23);
             TxtBuscDept.TabIndex = 26;
+            TxtBuscDept.Validated += TxtBuscDept_Validated;
             // 
             // TxtBuscNom
             // 
+            TxtBuscNom.Enabled = false;
             TxtBuscNom.Location = new Point(158, 95);
             TxtBuscNom.Name = "TxtBuscNom";
             TxtBuscNom.Size = new Size(200, 23);
@@ -479,6 +487,7 @@
             MaximizeBox = false;
             Name = "FrmUsuario";
             Text = "FrmUsuario";
+            Load += FrmUsuario_Load;
             tabControl1.ResumeLayout(false);
             TpAlta.ResumeLayout(false);
             TpAlta.PerformLayout();
@@ -520,7 +529,7 @@
         private PictureBox PbBorr;
         private ListView LvListar;
         private PictureBox PbBusc;
-        private MaskedTextBox TxtBuscFech;
+        private MaskedTextBox MtbBuscFech;
         private GroupBox GbBuscTip;
         private RadioButton RbBuscEstu;
         private RadioButton RbBuscPas;
