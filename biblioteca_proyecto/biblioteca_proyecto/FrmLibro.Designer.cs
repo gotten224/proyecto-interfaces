@@ -151,12 +151,10 @@
             // RbAlmacen
             // 
             RbAlmacen.AutoSize = true;
-            RbAlmacen.Checked = true;
             RbAlmacen.Location = new Point(20, 60);
             RbAlmacen.Name = "RbAlmacen";
             RbAlmacen.Size = new Size(72, 19);
             RbAlmacen.TabIndex = 1;
-            RbAlmacen.TabStop = true;
             RbAlmacen.Text = "Almacen";
             RbAlmacen.UseVisualStyleBackColor = true;
             RbAlmacen.CheckedChanged += RbSala_CheckedChanged;
@@ -168,7 +166,6 @@
             RbSala.Name = "RbSala";
             RbSala.Size = new Size(46, 19);
             RbSala.TabIndex = 0;
-            RbSala.TabStop = true;
             RbSala.Text = "Sala";
             RbSala.UseVisualStyleBackColor = true;
             RbSala.CheckedChanged += RbSala_CheckedChanged;
@@ -230,6 +227,7 @@
             PbBorr.SizeMode = PictureBoxSizeMode.StretchImage;
             PbBorr.TabIndex = 23;
             PbBorr.TabStop = false;
+            PbBorr.Click += PbBorr_Click;
             // 
             // LvListar
             // 
@@ -294,11 +292,13 @@
             PbModif.SizeMode = PictureBoxSizeMode.StretchImage;
             PbModif.TabIndex = 42;
             PbModif.TabStop = false;
+            PbModif.Click += PbModif_Click;
             // 
             // mskTbIdBusc
             // 
+            mskTbIdBusc.Enabled = false;
             mskTbIdBusc.Location = new Point(162, 152);
-            mskTbIdBusc.Mask = "99999";
+            mskTbIdBusc.Mask = "9999";
             mskTbIdBusc.Name = "mskTbIdBusc";
             mskTbIdBusc.Size = new Size(200, 23);
             mskTbIdBusc.TabIndex = 41;
@@ -317,12 +317,10 @@
             // RbAlmaBusc
             // 
             RbAlmaBusc.AutoSize = true;
-            RbAlmaBusc.Checked = true;
             RbAlmaBusc.Location = new Point(20, 60);
             RbAlmaBusc.Name = "RbAlmaBusc";
             RbAlmaBusc.Size = new Size(72, 19);
             RbAlmaBusc.TabIndex = 1;
-            RbAlmaBusc.TabStop = true;
             RbAlmaBusc.Text = "Almacen";
             RbAlmaBusc.UseVisualStyleBackColor = true;
             // 
@@ -333,7 +331,6 @@
             RbSalaBusc.Name = "RbSalaBusc";
             RbSalaBusc.Size = new Size(46, 19);
             RbSalaBusc.TabIndex = 0;
-            RbSalaBusc.TabStop = true;
             RbSalaBusc.Text = "Sala";
             RbSalaBusc.UseVisualStyleBackColor = true;
             RbSalaBusc.CheckedChanged += RbSalaBusc_CheckedChanged;
@@ -389,6 +386,7 @@
             BtnBusc.TabIndex = 34;
             BtnBusc.Text = "Buscar";
             BtnBusc.UseVisualStyleBackColor = true;
+            BtnBusc.Click += BtnBusc_Click;
             // 
             // TxtBusc
             // 
