@@ -65,6 +65,7 @@
             label4 = new Label();
             label3 = new Label();
             epTransacciones = new ErrorProvider(components);
+            Tipo = new ColumnHeader();
             tabControl1.SuspendLayout();
             TpAlta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PbTipo).BeginInit();
@@ -225,6 +226,7 @@
             CbTipo.Name = "CbTipo";
             CbTipo.Size = new Size(262, 23);
             CbTipo.TabIndex = 20;
+            CbTipo.SelectedIndexChanged += CbTipo_SelectedIndexChanged;
             // 
             // PbBorr
             // 
@@ -238,7 +240,7 @@
             // 
             // LvListar
             // 
-            LvListar.Columns.AddRange(new ColumnHeader[] { libro, nombre, fechadev });
+            LvListar.Columns.AddRange(new ColumnHeader[] { libro, nombre, fechadev, Tipo });
             LvListar.Location = new Point(6, 84);
             LvListar.Name = "LvListar";
             LvListar.Size = new Size(776, 336);
@@ -248,16 +250,19 @@
             // 
             // libro
             // 
+            libro.DisplayIndex = 1;
             libro.Text = "Libro";
             libro.Width = 250;
             // 
             // nombre
             // 
+            nombre.DisplayIndex = 2;
             nombre.Text = "nombre persona";
             nombre.Width = 250;
             // 
             // fechadev
             // 
+            fechadev.DisplayIndex = 3;
             fechadev.Text = "Fecha de devolucion";
             fechadev.Width = 270;
             // 
@@ -413,6 +418,12 @@
             // 
             epTransacciones.ContainerControl = this;
             // 
+            // Tipo
+            // 
+            Tipo.DisplayIndex = 0;
+            Tipo.Text = "Tipo";
+            Tipo.Width = 100;
+            // 
             // FrmPrestamo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -477,5 +488,6 @@
         private Label label4;
         private Label label3;
         private ErrorProvider epTransacciones;
+        private ColumnHeader Tipo;
     }
 }
