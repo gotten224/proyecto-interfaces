@@ -165,6 +165,7 @@ namespace biblioteca_proyecto
             LvListar.Items.Clear();
             foreach (Transaccion i in Form1.transacciones)
             {
+
                 if (i.GetType() == Type.GetType("biblioteca_proyecto." + CbTipo.SelectedItem.ToString()))
                 {
                     switch (CbTipo.SelectedItem.ToString())
@@ -207,6 +208,7 @@ namespace biblioteca_proyecto
                     }
                 }
             }
+
         }
     }
 }

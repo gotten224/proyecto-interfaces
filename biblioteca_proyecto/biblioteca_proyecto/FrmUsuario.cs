@@ -20,10 +20,12 @@ namespace biblioteca_proyecto
         }
         private void FrmUsuario_Load(object sender, EventArgs e)
         {
+          
             EpUsuario.SetError(TxtNombre, "El campo debe estar relleno");
             EpUsuario.SetError(TxtDepartamaento, "El campo debe estar relleno");
         }
 
+        //Cambia la imagen al elegir tipo
         private void Rbtipo_CheckedChanged(object sender, EventArgs e)
         {
             if (RbProfesor.Checked)
@@ -39,6 +41,8 @@ namespace biblioteca_proyecto
                 PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\estu.jpg";
             }
         }
+
+        //Cambia la imagen al elegir tipo
         private void Rbtipobusc_CheckedChanged(object sender, EventArgs e)
         {
             if (RbBuscProf.Checked)
@@ -55,6 +59,7 @@ namespace biblioteca_proyecto
             }
         }
 
+        //Agrega persona
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             bool error = false;
@@ -132,6 +137,7 @@ namespace biblioteca_proyecto
                                 }
                                 MessageBox.Show("Pas creado");
                             }
+                            BorrarCampos();
                         }
                         else
                         {
@@ -154,6 +160,7 @@ namespace biblioteca_proyecto
             }
         }
 
+        //Validacion del campo nombre
         private void TxtNombre_Validated(object sender, EventArgs e)
         {
             if (TxtNombre.Text == "")
@@ -167,6 +174,7 @@ namespace biblioteca_proyecto
             }
         }
 
+        //Validacion del campo departamento
         private void TxtDepartamaento_Validated(object sender, EventArgs e)
         {
             if (TxtDepartamaento.Text == "")
@@ -179,6 +187,7 @@ namespace biblioteca_proyecto
             }
         }
 
+        //Validacion del campo fecha de sancion
         private void MtbFechSan_Validated(object sender, EventArgs e)
         {
             DateTime dateValue;
@@ -193,10 +202,12 @@ namespace biblioteca_proyecto
             }
         }
 
+        //Eventos al cambiar de tab
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl1.SelectedTab.Text == "Listado")
             {
+                CbTipo.Text = "";
                 BorrarCampos();
                 Recargar_Lista();
             }
@@ -220,6 +231,7 @@ namespace biblioteca_proyecto
                 BorrarCampos();
             }
         }
+
 
         private void BorrarCampos()
         {
@@ -294,6 +306,7 @@ namespace biblioteca_proyecto
             }
         }
 
+        //Cambio en el combo box
         private void CbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -319,6 +332,7 @@ namespace biblioteca_proyecto
 
         }
 
+        //Borra persona
         private void PbBorr_Click(object sender, EventArgs e)
         {
             if (LvListar.SelectedItems[0] == null)
@@ -339,6 +353,7 @@ namespace biblioteca_proyecto
             }
         }
 
+        //busca persona
         private void BtnBusc_Click(object sender, EventArgs e)
         {
             foreach (Persona p in Form1.personas)
@@ -368,6 +383,7 @@ namespace biblioteca_proyecto
             }
         }
 
+        //Modifica persona
         private void PbModif_Click(object sender, EventArgs e)
         {
             bool error = false;
@@ -392,6 +408,7 @@ namespace biblioteca_proyecto
                                 p.FechaSancion = Convert.ToDateTime(MtbBuscFech.Text);
                             }
                             MessageBox.Show("Se han guardar los cambios");
+                            BorrarCampos();
                             break;
                         }
                     }
@@ -407,6 +424,7 @@ namespace biblioteca_proyecto
             }
         }
 
+        //Validacion campo departamento
         private void TxtBuscDept_Validated(object sender, EventArgs e)
         {
             if (TxtBuscDept.Text == "")
@@ -419,6 +437,7 @@ namespace biblioteca_proyecto
             }
         }
 
+        //Validacion campo departamento
         private void MtbBuscFech_Validated(object sender, EventArgs e)
         {
             DateTime dateValue;
