@@ -69,7 +69,6 @@ namespace biblioteca_proyecto
                     {
                         if (spliteado2.Length > 2)
                         {
-                            MessageBox.Show("Tengo Fecha");
                             Pas pa = new Pas()
                             {
                                 Nombre = nombre,
@@ -173,6 +172,7 @@ namespace biblioteca_proyecto
                             Libro = Convert.ToInt32(spliteado[1]),
                             FechaDevolucion = Convert.ToDateTime(spliteado[2])
                         };
+                        transacciones.Add(p);
                     }
                     else if (linea.StartsWith("devolucion"))
                     {
@@ -180,6 +180,7 @@ namespace biblioteca_proyecto
                         {
                             Libro = Convert.ToInt32(nombre)
                         };
+                        transacciones.Add(d);
 
                     }
 

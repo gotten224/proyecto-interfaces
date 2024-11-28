@@ -163,54 +163,12 @@ namespace biblioteca_proyecto
         private void CbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             LvListar.Items.Clear();
-            /*switch (CbTipo.SelectedItem.ToString())
+            foreach (Transaccion i in Form1.transacciones)
             {
-                case "Prestamo":
-                    MessageBox.Show("1");
-                    foreach (Transaccion i in Form1.transacciones) {
-                        if (i.GetType() == Type.GetType("biblioteca_proyecto")) {
-                            MessageBox.Show("Estoy dentro");
-                            ListViewItem linea = LvListar.Items.Add("Prestamo");
-                            linea.SubItems.Add(Convert.ToString(i.Libro));
-                            linea.SubItems.Add(i.Persona);
-                            linea.SubItems.Add(Convert.ToString(i.FechaDevolucion));
-                        }
-                    }
-                    break;
-                case "Devolucion":
-                    foreach (Devolucion i in Form1.transacciones)
-                    {
-                        if (i.GetType() == Type.GetType("biblioteca_proyecto.Devolucion"))
-                        {
-                            ListViewItem linea = LvListar.Items.Add("Devolucion");
-                            linea.SubItems.Add(Convert.ToString(i.Libro));
-                        }
-                    }
-                    break;
-                default:
-                    foreach (Transaccion i in Form1.transacciones) {
-                        if (i.GetType() == Type.GetType("biblioteca_proyecto.Prestamo"))
-                        {
-                            Prestamo p = (Prestamo)i;
-                            ListViewItem linea = LvListar.Items.Add("Prestamo");
-                            linea.SubItems.Add(Convert.ToString(p.Libro));
-                            linea.SubItems.Add(p.Persona);
-                            linea.SubItems.Add(Convert.ToString(p.FechaDevolucion));
-                        }
-
-                        if (i.GetType() == Type.GetType("biblioteca_proyecto.Devolucion"))
-                        {
-                            Devolucion d = (Devolucion)i;
-                            ListViewItem linea = LvListar.Items.Add("Devolucion");
-                            linea.SubItems.Add(Convert.ToString(d.Libro));
-                        }
-                    }
-                    break;
-            }*/
-            foreach (Transaccion i in Form1.transacciones) {
                 if (i.GetType() == Type.GetType("biblioteca_proyecto." + CbTipo.SelectedItem.ToString()))
                 {
-                    switch (CbTipo.SelectedItem.ToString()) {
+                    switch (CbTipo.SelectedItem.ToString())
+                    {
                         case "Prestamo":
                             Prestamo p = (Prestamo)i;
                             ListViewItem linea = LvListar.Items.Add("Prestamo");
@@ -223,11 +181,30 @@ namespace biblioteca_proyecto
                             Devolucion d = (Devolucion)i;
                             ListViewItem linea2 = LvListar.Items.Add("Devolucion");
                             linea2.SubItems.Add(Convert.ToString(d.Libro));
-                            linea2.SubItems.Add("");
-                            linea2.SubItems.Add("");
                             break;
                     }
 
+                }
+            }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab.Text == "Listado") {
+                foreach (Transaccion i in Form1.transacciones) {
+                    if (i.GetType() == Type.GetType("biblioteca_proyecto.Prestamo"))
+                    {
+                        Prestamo p = (Prestamo)i;
+                        ListViewItem linea = LvListar.Items.Add("Prestamo");
+                        linea.SubItems.Add(Convert.ToString(p.Libro));
+                        linea.SubItems.Add(p.Persona);
+                        linea.SubItems.Add(Convert.ToString(p.FechaDevolucion));
+                    }
+                    else if (i.GetType() == Type.GetType("biblioteca_proyecto.Devolucion")) {
+                        Devolucion d = (Devolucion)i;
+                        ListViewItem linea2 = LvListar.Items.Add("Devolucion");
+                        linea2.SubItems.Add(Convert.ToString(d.Libro));
+                    }
                 }
             }
         }
