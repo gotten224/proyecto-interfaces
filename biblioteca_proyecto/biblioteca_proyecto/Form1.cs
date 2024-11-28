@@ -140,6 +140,7 @@ namespace biblioteca_proyecto
                     libros.Add(l);
                     linea = pr.ReadLine();
                 }
+                pr.Close();
             }
             catch (Exception ex)
             {
@@ -222,7 +223,7 @@ namespace biblioteca_proyecto
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             SobreescribirLibros();
-            SobrescribirPersonas()
+            SobrescribirPersonas();
         }
 
         private void SobreescribirLibros()

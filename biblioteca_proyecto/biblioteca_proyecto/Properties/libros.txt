@@ -7,3 +7,4 @@ almacen Bases de datos multimedia, 7777
 almacen Memorias de un Naufrago, 1212
 sala Ejercicios interactivos de .Net, 4444
 almacen Bases de datos de sonido, 8888
+sala wigetta, 2003
