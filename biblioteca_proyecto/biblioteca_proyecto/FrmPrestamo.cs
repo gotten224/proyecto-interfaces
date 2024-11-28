@@ -207,10 +207,12 @@ namespace biblioteca_proyecto
                     }
                     break;
             }*/
-            foreach (Transaccion i in Form1.transacciones) {
+            foreach (Transaccion i in Form1.transacciones)
+            {
                 if (i.GetType() == Type.GetType("biblioteca_proyecto." + CbTipo.SelectedItem.ToString()))
                 {
-                    switch (CbTipo.SelectedItem.ToString()) {
+                    switch (CbTipo.SelectedItem.ToString())
+                    {
                         case "Prestamo":
                             Prestamo p = (Prestamo)i;
                             ListViewItem linea = LvListar.Items.Add("Prestamo");
@@ -230,6 +232,11 @@ namespace biblioteca_proyecto
 
                 }
             }
+        }
+
+        private void FrmPrestamo_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

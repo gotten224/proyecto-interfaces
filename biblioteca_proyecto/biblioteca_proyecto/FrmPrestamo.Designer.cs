@@ -49,8 +49,8 @@
             libro = new ColumnHeader();
             nombre = new ColumnHeader();
             fechadev = new ColumnHeader();
+            Tipo = new ColumnHeader();
             TpBuscar = new TabPage();
-            MtbFechDevBusc = new MaskedTextBox();
             PbModif = new PictureBox();
             groupBox2 = new GroupBox();
             RbDevBusc = new RadioButton();
@@ -61,11 +61,9 @@
             TxtNomBusc = new TextBox();
             PbBusc = new PictureBox();
             label1 = new Label();
-            label2 = new Label();
             label4 = new Label();
             label3 = new Label();
             epTransacciones = new ErrorProvider(components);
-            Tipo = new ColumnHeader();
             tabControl1.SuspendLayout();
             TpAlta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PbTipo).BeginInit();
@@ -240,7 +238,7 @@
             // 
             // LvListar
             // 
-            LvListar.Columns.AddRange(new ColumnHeader[] { libro, nombre, fechadev, Tipo });
+            LvListar.Columns.AddRange(new ColumnHeader[] { Tipo, libro, nombre, fechadev });
             LvListar.Location = new Point(6, 84);
             LvListar.Name = "LvListar";
             LvListar.Size = new Size(776, 336);
@@ -250,25 +248,26 @@
             // 
             // libro
             // 
-            libro.DisplayIndex = 1;
             libro.Text = "Libro";
             libro.Width = 250;
             // 
             // nombre
             // 
-            nombre.DisplayIndex = 2;
             nombre.Text = "nombre persona";
             nombre.Width = 250;
             // 
             // fechadev
             // 
-            fechadev.DisplayIndex = 3;
             fechadev.Text = "Fecha de devolucion";
             fechadev.Width = 270;
             // 
+            // Tipo
+            // 
+            Tipo.Text = "Tipo";
+            Tipo.Width = 100;
+            // 
             // TpBuscar
             // 
-            TpBuscar.Controls.Add(MtbFechDevBusc);
             TpBuscar.Controls.Add(PbModif);
             TpBuscar.Controls.Add(groupBox2);
             TpBuscar.Controls.Add(BtnBusc);
@@ -277,7 +276,6 @@
             TpBuscar.Controls.Add(TxtNomBusc);
             TpBuscar.Controls.Add(PbBusc);
             TpBuscar.Controls.Add(label1);
-            TpBuscar.Controls.Add(label2);
             TpBuscar.Controls.Add(label4);
             TpBuscar.Controls.Add(label3);
             TpBuscar.Location = new Point(4, 24);
@@ -287,15 +285,6 @@
             TpBuscar.TabIndex = 2;
             TpBuscar.Text = "Buscar";
             TpBuscar.UseVisualStyleBackColor = true;
-            // 
-            // MtbFechDevBusc
-            // 
-            MtbFechDevBusc.Location = new Point(158, 200);
-            MtbFechDevBusc.Mask = "00/00/0000";
-            MtbFechDevBusc.Name = "MtbFechDevBusc";
-            MtbFechDevBusc.Size = new Size(200, 23);
-            MtbFechDevBusc.TabIndex = 27;
-            MtbFechDevBusc.ValidatingType = typeof(DateTime);
             // 
             // PbModif
             // 
@@ -387,15 +376,6 @@
             label1.TabIndex = 23;
             label1.Text = "Tipo";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(23, 203);
-            label2.Name = "label2";
-            label2.Size = new Size(116, 15);
-            label2.TabIndex = 22;
-            label2.Text = "Fecha de devulucion";
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -418,12 +398,6 @@
             // 
             epTransacciones.ContainerControl = this;
             // 
-            // Tipo
-            // 
-            Tipo.DisplayIndex = 0;
-            Tipo.Text = "Tipo";
-            Tipo.Width = 100;
-            // 
             // FrmPrestamo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -432,6 +406,7 @@
             Controls.Add(tabControl1);
             Name = "FrmPrestamo";
             Text = "FrmPrestamo";
+            Load += FrmPrestamo_Load;
             tabControl1.ResumeLayout(false);
             TpAlta.ResumeLayout(false);
             TpAlta.PerformLayout();
@@ -477,14 +452,12 @@
         private ColumnHeader libro;
         private ColumnHeader nombre;
         private ColumnHeader fechadev;
-        private MaskedTextBox MtbFechDevBusc;
         private GroupBox groupBox2;
         private RadioButton RbDevBusc;
         private RadioButton RbPrestBusc;
         private TextBox TxtIsbnBusc;
         private TextBox TxtNomBusc;
         private Label label1;
-        private Label label2;
         private Label label4;
         private Label label3;
         private ErrorProvider epTransacciones;
