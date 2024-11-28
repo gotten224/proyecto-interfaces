@@ -20,6 +20,7 @@ namespace biblioteca_proyecto
         private void TpAltaLibro_Click(object sender, EventArgs e)
         {
         }
+        //Controla imagen cuando se selecciona uun RadioButton
 
         private void RbSala_CheckedChanged(object sender, EventArgs e)
         {
@@ -32,7 +33,7 @@ namespace biblioteca_proyecto
                 PbUbicacion.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\almacen.jpg";
             }
         }
-
+        //Controla imagen cuando se selecciona uun RadioButton en el apartado buscar
         private void RbSalaBusc_CheckedChanged(object sender, EventArgs e)
         {
             if (RbSalaBusc.Checked)
@@ -45,7 +46,7 @@ namespace biblioteca_proyecto
             }
         }
 
-
+        //Validacion de campos
         private void TbTitulo_Validated(object sender, EventArgs e)
         {
             if (TbTitulo.Text == "")
@@ -57,6 +58,7 @@ namespace biblioteca_proyecto
                 EpLibro.SetError(TbTitulo, "");
             }
         }
+        //Validacion de campos
 
         private void MtbIdLibro_Validated(object sender, EventArgs e)
         {
@@ -71,6 +73,7 @@ namespace biblioteca_proyecto
                 EpLibro.SetError(MtbIdLibro, "");
             }
         }
+        //Al hacer click en el boton, agrega el libro si cumple las condiciones necesarias y si no presenta ningun error
 
         private void BtnAgragar_Click(object sender, EventArgs e)
         {
@@ -143,10 +146,12 @@ namespace biblioteca_proyecto
             }
         }
 
+        //Al volver al tabControl listado actualiza el listview para que muestre todos los libros automaticamente
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl1.SelectedTab.Text == "Listado")
             {
+                CbUbi.Text = "";
                 LvListar.Items.Clear();
                 foreach (Libro l in Form1.libros)
                 {
@@ -157,7 +162,7 @@ namespace biblioteca_proyecto
                 }
             }
         }
-
+        //Al seleccionar una de las opciones del cbox filtra la lista por la ubicacion seleccionada
         private void CbUbi_SelectedIndexChanged(object sender, EventArgs e)
         {
             LvListar.Items.Clear();
@@ -174,7 +179,7 @@ namespace biblioteca_proyecto
             }
 
         }
-
+        //Al pulsar sobre el boton borrar se elimina el item seleccionado en el listView
         private void PbBorr_Click(object sender, EventArgs e)
         {
             try
@@ -208,6 +213,7 @@ namespace biblioteca_proyecto
 
         }
 
+        //Recoge el titulo que ha escrito el usuario y lo busca dentro de la lista que contiene todos los libros
         private void BtnBusc_Click(object sender, EventArgs e)
         {
             String nombreLibroBusc = TxtBusc.Text;
@@ -229,6 +235,7 @@ namespace biblioteca_proyecto
             }
         }
 
+        //Modifica el libro 
         private void PbModif_Click(object sender, EventArgs e)
         {
             try
