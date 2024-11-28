@@ -67,70 +67,85 @@ namespace biblioteca_proyecto
             }
             if (!error)
             {
-                try
+                bool rep = false;
+                foreach(Persona p in Form1.personas)
                 {
-                    if (RbPas.Checked || RbProfesor.Checked || RbEstudinte.Checked)
+                    if(p.Nombre == TxtNombre.Text)
                     {
-                        if (RbProfesor.Checked)
-                        {
-                            System.String nombre = TxtNombre.Text;
-                            System.String dept = TxtDepartamaento.Text;
-                            if (MtbFechSan.MaskCompleted)
-                            {
-                                DateTime fechsan = Convert.ToDateTime(MtbFechSan.Text);
-                                Profesor profesor = new Profesor(nombre, dept, fechsan);
-                                Form1.personas.Add(profesor);
-                            }
-                            else
-                            {
-                                Profesor profesor = new Profesor(nombre, dept);
-                                Form1.personas.Add(profesor);
-                            }
-                            MessageBox.Show("Profesor creado");
-                        }
-                        else if (RbEstudinte.Checked)
-                        {
-                            System.String nombre = TxtNombre.Text;
-                            System.String dept = TxtDepartamaento.Text;
-                            if (MtbFechSan.MaskCompleted)
-                            {
-                                DateTime fechsan = Convert.ToDateTime(MtbFechSan.Text);
-                                Alumno alumno = new Alumno(nombre, dept, fechsan);
-                                Form1.personas.Add(alumno);
-                            }
-                            else
-                            {
-                                Alumno alumno = new Alumno(nombre, dept);
-                                Form1.personas.Add(alumno);
-                            }
-                            MessageBox.Show("Alumno creado");
-                        }
-                        else if (RbPas.Checked)
-                        {
-                            System.String nombre = TxtNombre.Text;
-                            System.String dept = TxtDepartamaento.Text;
-                            if (MtbFechSan.MaskCompleted)
-                            {
-                                DateTime fechsan = Convert.ToDateTime(MtbFechSan.Text);
-                                Pas pas = new Pas(nombre, dept, fechsan);
-                                Form1.personas.Add(pas);
-                            }
-                            else
-                            {
-                                Pas pas = new Pas(nombre, dept);
-                                Form1.personas.Add(pas);
-                            }
-                            MessageBox.Show("Pas creado");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("No has seleccionado tipo");
+                        rep = true;
                     }
                 }
-                catch
+                if (!rep)
                 {
-                    MessageBox.Show("No se ha podido guardar el cliente");
+                    try
+                    {
+                        if (RbPas.Checked || RbProfesor.Checked || RbEstudinte.Checked)
+                        {
+                            if (RbProfesor.Checked)
+                            {
+                                System.String nombre = TxtNombre.Text;
+                                System.String dept = TxtDepartamaento.Text;
+                                if (MtbFechSan.MaskCompleted)
+                                {
+                                    DateTime fechsan = Convert.ToDateTime(MtbFechSan.Text);
+                                    Profesor profesor = new Profesor(nombre, dept, fechsan);
+                                    Form1.personas.Add(profesor);
+                                }
+                                else
+                                {
+                                    Profesor profesor = new Profesor(nombre, dept);
+                                    Form1.personas.Add(profesor);
+                                }
+                                MessageBox.Show("Profesor creado");
+                            }
+                            else if (RbEstudinte.Checked)
+                            {
+                                System.String nombre = TxtNombre.Text;
+                                System.String dept = TxtDepartamaento.Text;
+                                if (MtbFechSan.MaskCompleted)
+                                {
+                                    DateTime fechsan = Convert.ToDateTime(MtbFechSan.Text);
+                                    Alumno alumno = new Alumno(nombre, dept, fechsan);
+                                    Form1.personas.Add(alumno);
+                                }
+                                else
+                                {
+                                    Alumno alumno = new Alumno(nombre, dept);
+                                    Form1.personas.Add(alumno);
+                                }
+                                MessageBox.Show("Alumno creado");
+                            }
+                            else if (RbPas.Checked)
+                            {
+                                System.String nombre = TxtNombre.Text;
+                                System.String dept = TxtDepartamaento.Text;
+                                if (MtbFechSan.MaskCompleted)
+                                {
+                                    DateTime fechsan = Convert.ToDateTime(MtbFechSan.Text);
+                                    Pas pas = new Pas(nombre, dept, fechsan);
+                                    Form1.personas.Add(pas);
+                                }
+                                else
+                                {
+                                    Pas pas = new Pas(nombre, dept);
+                                    Form1.personas.Add(pas);
+                                }
+                                MessageBox.Show("Pas creado");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("No has seleccionado tipo");
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("No se ha podido guardar el cliente");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se ha podido guardar el usuario porque el nombre de usuario ya existe");
                 }
             }
             else
@@ -182,10 +197,12 @@ namespace biblioteca_proyecto
         {
             if (tabControl1.SelectedTab.Text == "Listado")
             {
+                BorrarCampos();
                 Recargar_Lista();
             }
             if (tabControl1.SelectedTab.Text == "Alta")
             {
+                BorrarCampos();
                 foreach (Control i in tabControl1.SelectedTab.Controls)
                 {
                     EpUsuario.SetError(i, "");
@@ -219,6 +236,8 @@ namespace biblioteca_proyecto
             RbEstudinte.Checked = false;
             RbPas.Checked = false;
             RbProfesor.Checked = false;
+            PbTipo.ImageLocation = "";
+            PbBusc.ImageLocation = "";
         }
 
         private void Recargar_Lista()
@@ -407,11 +426,11 @@ namespace biblioteca_proyecto
             {
                 EpUsuario.SetError(MtbBuscFech, "El campo debe ser una fecha");
             }
-
             else
             {
                 EpUsuario.SetError(MtbBuscFech, "");
             }
+            
         }
     }
 }
