@@ -46,10 +46,12 @@
             CbTipo = new ComboBox();
             PbBorr = new PictureBox();
             LvListar = new ListView();
-            libro = new ColumnHeader();
-            nombre = new ColumnHeader();
-            fechadev = new ColumnHeader();
-            Tipo = new ColumnHeader();
+
+            Columna1 = new ColumnHeader();
+            Columna2 = new ColumnHeader();
+            Columna3 = new ColumnHeader();
+            columna4 = new ColumnHeader();
+
             TpBuscar = new TabPage();
             PbModif = new PictureBox();
             groupBox2 = new GroupBox();
@@ -88,6 +90,7 @@
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(796, 458);
             tabControl1.TabIndex = 11;
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
             // TpAlta
             // 
@@ -238,7 +241,8 @@
             // 
             // LvListar
             // 
-            LvListar.Columns.AddRange(new ColumnHeader[] { Tipo, libro, nombre, fechadev });
+            LvListar.Columns.AddRange(new ColumnHeader[] { Columna1, Columna2, Columna3, columna4 });
+
             LvListar.Location = new Point(6, 84);
             LvListar.Name = "LvListar";
             LvListar.Size = new Size(776, 336);
@@ -246,20 +250,29 @@
             LvListar.UseCompatibleStateImageBehavior = false;
             LvListar.View = View.Details;
             // 
-            // libro
+            // Columna1
             // 
-            libro.Text = "Libro";
-            libro.Width = 250;
+
+            Columna1.Text = "Tipo";
+            Columna1.Width = 120;
+
             // 
-            // nombre
+            // Columna2
             // 
-            nombre.Text = "nombre persona";
-            nombre.Width = 250;
+            Columna2.Text = "Libro";
+            Columna2.Width = 180;
+
             // 
-            // fechadev
+            // Columna3
             // 
-            fechadev.Text = "Fecha de devolucion";
-            fechadev.Width = 270;
+            Columna3.Text = "Persona";
+            Columna3.Width = 120;
+            // 
+            // columna4
+            // 
+            columna4.Text = "Fecha Devolucion";
+            columna4.Width = 240;
+
             // 
             // Tipo
             // 
@@ -449,9 +462,8 @@
         private Button BtnBusc;
         private TextBox TxtBusc;
         private PictureBox PbBusc;
-        private ColumnHeader libro;
-        private ColumnHeader nombre;
-        private ColumnHeader fechadev;
+        private MaskedTextBox MtbFechDevBusc;
+
         private GroupBox groupBox2;
         private RadioButton RbDevBusc;
         private RadioButton RbPrestBusc;
@@ -461,6 +473,9 @@
         private Label label4;
         private Label label3;
         private ErrorProvider epTransacciones;
-        private ColumnHeader Tipo;
+        private ColumnHeader Columna1;
+        private ColumnHeader Columna2;
+        private ColumnHeader Columna3;
+        private ColumnHeader columna4;
     }
 }
