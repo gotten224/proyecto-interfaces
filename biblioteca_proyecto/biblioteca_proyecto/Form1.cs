@@ -69,7 +69,6 @@ namespace biblioteca_proyecto
                     {
                         if (spliteado2.Length > 2)
                         {
-                            MessageBox.Show("Tengo Fecha");
                             Pas pa = new Pas()
                             {
                                 Nombre = nombre,
@@ -140,6 +139,7 @@ namespace biblioteca_proyecto
                     libros.Add(l);
                     linea = pr.ReadLine();
                 }
+                pr.Close();
             }
             catch (Exception ex)
             {
@@ -185,7 +185,7 @@ namespace biblioteca_proyecto
 
                     linea = pr.ReadLine();
                 }
-
+                pr.Close();
             }
             catch (Exception ex)
             {
@@ -222,7 +222,7 @@ namespace biblioteca_proyecto
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             SobreescribirLibros();
-            SobrescribirPersonas()
+            SobrescribirPersonas();
         }
 
         private void SobreescribirLibros()
@@ -241,7 +241,33 @@ namespace biblioteca_proyecto
 
         private void SobrescribirPersonas()
         {
-
+            String path = Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\usuarios.txt";
+            StreamWriter streamOut = new StreamWriter(path);
+            foreach (Persona p in personas)
+            {
+                String tipo = "";
+                if (p.GetType() == Type.GetType("biblioteca_proyecto.Profesor"))
+                {
+                    tipo = "profesor";
+                }
+                else if (p.GetType() == Type.GetType("biblioteca_proyecto.Alumno"))
+                {
+                    tipo = "alumno";
+                }
+                else if (p.GetType() == Type.GetType("biblioteca_proyecto.Pas"))
+                {
+                    tipo = "pas";
+                }
+                if (p.FechaSancion == null) {
+                    streamOut.WriteLine(tipo + " " + p.Nombre + ", " + p.Departamento);
+                }
+                else
+                {
+                    streamOut.WriteLine(tipo + " " + p.Nombre + ", " + p.Departamento + ", " + p.FechaSancion);
+                }
+            }
+            streamOut.Close();
+            MessageBox.Show("Los usuarios se han guardado correctamente");
         }
     }
 }
