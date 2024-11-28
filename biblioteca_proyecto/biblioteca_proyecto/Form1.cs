@@ -222,11 +222,12 @@ namespace biblioteca_proyecto
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             SobreescribirLibros();
+            SobrescribirPersonas()
         }
 
         private void SobreescribirLibros()
         {
-            String path = ".\\..\\..\\..\\..\\Properties\\libros.txt";
+            String path = Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\libros.txt";
             StreamWriter streamOut = new StreamWriter(path);
             foreach (Libro l in libros)
             {
@@ -235,6 +236,11 @@ namespace biblioteca_proyecto
             streamOut.Close();
             MessageBox.Show("Los libros se han guardado correctamente");
 
+
+        }
+
+        private void SobrescribirPersonas()
+        {
 
         }
     }
