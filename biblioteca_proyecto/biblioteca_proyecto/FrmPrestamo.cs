@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,6 +30,7 @@ namespace biblioteca_proyecto
                 Prestamo p = new Prestamo(fechaActual);
                 Libro ls = new Libro();
                 Persona pe = new Persona();
+                
                 //Se busca el libro en la Coleccion de Libros
                 foreach (Libro l in Form1.libros)
                 {
@@ -36,6 +38,12 @@ namespace biblioteca_proyecto
                     {
                         ls = l;
                     }
+                }
+
+                if (ls == null)
+                {
+                    MessageBox.Show("No se puede crear un Préstamo porque el libro asignado no existe.");
+                    return;
                 }
 
                 p.Libro = ls.Id;
@@ -79,6 +87,11 @@ namespace biblioteca_proyecto
                         }
                     }
                 }
+                if(pe == null)
+                {
+                    MessageBox.Show("No se puede crear un Préstamo porque la persona asignada no existe.");
+                    return;
+                }
                 p.FechaDevolucion = FechaDevolucion;
                 Form1.transacciones.Add(p);
                 Form1.transaccionesNuevas.Add(p);
@@ -95,6 +108,11 @@ namespace biblioteca_proyecto
                     {
                         ls = l;
                     }
+                }
+
+                if (ls == null) {
+                    MessageBox.Show("No se puede crear una Devolucion porque el libro asignado no existe.");
+                    return;
                 }
 
                 d.Libro = ls.Id;
@@ -205,7 +223,7 @@ namespace biblioteca_proyecto
             }
             else if (CbBuscar.Text == "Departamento")
             {
-
+                buscarDepartamento();
             }
             else
             {
@@ -311,7 +329,6 @@ namespace biblioteca_proyecto
             String buscar = TxtBusc.Text;
             if (!string.IsNullOrEmpty(buscar))
             {
-                LvListar.Items.Clear();
                 foreach (Transaccion i in Form1.transacciones)
                 {
                     if (i.FechaTransaccion.ToShortDateString() == buscar)
@@ -343,5 +360,75 @@ namespace biblioteca_proyecto
                 MessageBox.Show("Texto no valido para buscar");
             }
         }
+
+        public void buscarDepartamento()
+        {
+            String buscar = TxtBusc.Text;
+            if (!string.IsNullOrEmpty(buscar))
+            {
+                String departamento = "";
+                ArrayList prestamos = new ArrayList();
+
+                // Buscar personas por departamento
+                foreach (Persona p in Form1.personas)
+                {
+                    if (buscar == p.Departamento.Trim())
+                    {
+                        departamento = p.Departamento;
+                        prestamos.Add(p.Nombre);
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(departamento))
+                {
+                    LvListar.Items.Clear();
+
+                    // Buscar transacciones asociadas a esas personas
+                    foreach (Transaccion i in Form1.transacciones)
+                    {
+                        if (i is Prestamo p)
+                        {
+                            // Comprobar si la persona está en la lista de prestamos
+                            if (prestamos.Contains(p.Persona))
+                            {
+                                ListViewItem linea = LvListar.Items.Add("Prestamo");
+                                linea.SubItems.Add(Convert.ToString(p.Libro));
+                                linea.SubItems.Add(p.Persona);
+                                linea.SubItems.Add(Convert.ToString(p.FechaDevolucion));
+                            }
+                        }
+                        else if (i is Devolucion d)
+                        {
+                            // Relacionar devoluciones con préstamos
+                            foreach (Transaccion t in Form1.transacciones)
+                            {
+                                if (t is Prestamo prestamoRelacionado &&
+                                    prestamos.Contains(prestamoRelacionado.Persona) &&
+                                    prestamoRelacionado.Libro == d.Libro)
+                                {
+                                    ListViewItem linea2 = LvListar.Items.Add("Devolucion");
+                                    linea2.SubItems.Add(Convert.ToString(d.Libro));
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (LvListar.Items.Count == 0)
+                    {
+                        MessageBox.Show("En este departamento no hay Transacciones asignadas");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El departamento no existe");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Texto no válido para buscar");
+            }
+        }
+
     }
 }
