@@ -94,9 +94,7 @@ namespace biblioteca_proyecto
                     }
                 }
 
-                //p.Libro = Convert.ToInt32(TxtIsbn.Text);
-                //p.Persona = TbNombre.Text;
-
+               
 
                 d.Libro = ls.Id;
                 MessageBox.Show("Devolucion Creada");
