@@ -94,7 +94,7 @@ namespace biblioteca_proyecto
                     }
                 }
 
-               
+
 
                 d.Libro = ls.Id;
                 MessageBox.Show("Devolucion Creada");
@@ -129,10 +129,7 @@ namespace biblioteca_proyecto
 
         }
 
-        private void TpAlta_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void TbNombre_Validating(object sender, CancelEventArgs e)
         {
@@ -158,39 +155,13 @@ namespace biblioteca_proyecto
             }
         }
 
-        private void CbTipo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LvListar.Items.Clear();
-            foreach (Transaccion i in Form1.transacciones)
-            {
-
-                if (i.GetType() == Type.GetType("biblioteca_proyecto." + CbTipo.SelectedItem.ToString()))
-                {
-                    switch (CbTipo.SelectedItem.ToString())
-                    {
-                        case "Prestamo":
-                            Prestamo p = (Prestamo)i;
-                            ListViewItem linea = LvListar.Items.Add("Prestamo");
-                            linea.SubItems.Add(Convert.ToString(p.Libro));
-                            linea.SubItems.Add(p.Persona);
-                            linea.SubItems.Add(Convert.ToString(p.FechaDevolucion));
-                            break;
-
-                        case "Devolucion":
-                            Devolucion d = (Devolucion)i;
-                            ListViewItem linea2 = LvListar.Items.Add("Devolucion");
-                            linea2.SubItems.Add(Convert.ToString(d.Libro));
-                            break;
-                    }
-
-                }
-            }
-        }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedTab.Text == "Listado") {
-                foreach (Transaccion i in Form1.transacciones) {
+            if (tabControl1.SelectedTab.Text == "Listado")
+            {
+                foreach (Transaccion i in Form1.transacciones)
+                {
                     if (i.GetType() == Type.GetType("biblioteca_proyecto.Prestamo"))
                     {
                         Prestamo p = (Prestamo)i;
@@ -199,7 +170,8 @@ namespace biblioteca_proyecto
                         linea.SubItems.Add(p.Persona);
                         linea.SubItems.Add(Convert.ToString(p.FechaDevolucion));
                     }
-                    else if (i.GetType() == Type.GetType("biblioteca_proyecto.Devolucion")) {
+                    else if (i.GetType() == Type.GetType("biblioteca_proyecto.Devolucion"))
+                    {
                         Devolucion d = (Devolucion)i;
                         ListViewItem linea2 = LvListar.Items.Add("Devolucion");
                         linea2.SubItems.Add(Convert.ToString(d.Libro));
@@ -207,6 +179,35 @@ namespace biblioteca_proyecto
                 }
             }
 
+        }
+
+        private void BtnBusc_Click(object sender, EventArgs e)
+        {
+            
+            if (CbBuscar.Text == "Tipo de movimiento")
+            {
+
+            }
+            else if(CbBuscar.Text == "Titulo")
+            {
+
+            }
+            else if (CbBuscar.Text == "Usuario")
+            {
+
+            }
+            else if (CbBuscar.Text == "Fecha")
+            {
+
+            }
+            else if (CbBuscar.Text == "Departamento")
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Debes seleccionar un tipo de busqueda");
+            }
         }
     }
 }
