@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -192,7 +193,7 @@ namespace biblioteca_proyecto
             }
             else if(CbBuscar.Text == "Titulo")
             {
-
+                busacarTitulo();
             }
             else if (CbBuscar.Text == "Usuario")
             {
@@ -215,13 +216,76 @@ namespace biblioteca_proyecto
         public void busacarMovimiento()
         {
             String buscar = TxtBusc.Text;
-            if (!string.IsNullOrEmpty(buscar))
+            buscar = buscar.Substring(0, 1).ToUpper() + buscar.Substring(1).ToLower();
+            if (!string.IsNullOrEmpty(buscar) && (buscar == "Prestamo" || buscar == "Devolucion"))
             {
+                LvListar.Items.Clear();
+                foreach (Transaccion i in Form1.transacciones)
+                {
 
+                    if (i.GetType() == Type.GetType("biblioteca_proyecto." + buscar))
+                    {
+                        switch (buscar)
+                        {
+                            case "Prestamo":
+                                Prestamo p = (Prestamo)i;
+                                ListViewItem linea = LvListar.Items.Add("Prestamo");
+                                linea.SubItems.Add(Convert.ToString(p.Libro));
+                                linea.SubItems.Add(p.Persona);
+                                linea.SubItems.Add(Convert.ToString(p.FechaDevolucion));
+                                break;
+
+                            case "Devolucion":
+                                Devolucion d = (Devolucion)i;
+                                ListViewItem linea2 = LvListar.Items.Add("Devolucion");
+                                linea2.SubItems.Add(Convert.ToString(d.Libro));
+                                break;
+                        }
+
+                    }
+                }
             }
             else
             {
-                MessageBox.Show("No has escrito el texto para buscar");
+                MessageBox.Show("Texto no valido para buscar");
+            }
+        }
+
+        public void busacarTitulo()
+        {
+            String buscar = TxtBusc.Text;
+            if (!string.IsNullOrEmpty(buscar))
+            {
+                buscar = buscar.Substring(0, 1).ToUpper() + buscar.Substring(1).ToLower();
+                LvListar.Items.Clear();
+                foreach (Transaccion i in Form1.transacciones)
+                {
+
+                    if (i.GetType() == Type.GetType("biblioteca_proyecto." + buscar))
+                    {
+                        switch (buscar)
+                        {
+                            case "Prestamo":
+                                Prestamo p = (Prestamo)i;
+                                ListViewItem linea = LvListar.Items.Add("Prestamo");
+                                linea.SubItems.Add(Convert.ToString(p.Libro));
+                                linea.SubItems.Add(p.Persona);
+                                linea.SubItems.Add(Convert.ToString(p.FechaDevolucion));
+                                break;
+
+                            case "Devolucion":
+                                Devolucion d = (Devolucion)i;
+                                ListViewItem linea2 = LvListar.Items.Add("Devolucion");
+                                linea2.SubItems.Add(Convert.ToString(d.Libro));
+                                break;
+                        }
+
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Texto no valido para buscar");
             }
         }
     }
