@@ -201,7 +201,7 @@ namespace biblioteca_proyecto
             }
             else if (CbBuscar.Text == "Fecha")
             {
-
+                busacarFecha();
             }
             else if (CbBuscar.Text == "Departamento")
             {
@@ -256,32 +256,87 @@ namespace biblioteca_proyecto
             String buscar = TxtBusc.Text;
             if (!string.IsNullOrEmpty(buscar))
             {
-                buscar = buscar.Substring(0, 1).ToUpper() + buscar.Substring(1).ToLower();
-                LvListar.Items.Clear();
-                foreach (Transaccion i in Form1.transacciones)
+                int isbn = 0;
+                foreach (Libro l in Form1.libros)
                 {
-
-                    if (i.GetType() == Type.GetType("biblioteca_proyecto." + buscar))
+                    if (l.Titulo == buscar)
                     {
-                        switch (buscar)
+                        isbn = l.Id;
+                        break;
+                    }
+                }
+                if (isbn != 0)
+                {
+                    LvListar.Items.Clear();
+                    foreach (Transaccion i in Form1.transacciones)
+                    {
+                        if (i.GetType() == Type.GetType("biblioteca_proyecto.Prestamo"))
                         {
-                            case "Prestamo":
-                                Prestamo p = (Prestamo)i;
+
+                            Prestamo p = (Prestamo)i;
+                            if (p.Libro == isbn)
+                            {
                                 ListViewItem linea = LvListar.Items.Add("Prestamo");
                                 linea.SubItems.Add(Convert.ToString(p.Libro));
                                 linea.SubItems.Add(p.Persona);
                                 linea.SubItems.Add(Convert.ToString(p.FechaDevolucion));
-                                break;
-
-                            case "Devolucion":
-                                Devolucion d = (Devolucion)i;
+                            }
+                        }
+                        if (i.GetType() == Type.GetType("biblioteca_proyecto.Devolucion"))
+                        {
+                            Devolucion d = (Devolucion)i;
+                            if (d.Libro == isbn)
+                            {
                                 ListViewItem linea2 = LvListar.Items.Add("Devolucion");
                                 linea2.SubItems.Add(Convert.ToString(d.Libro));
-                                break;
+                            }
                         }
 
                     }
+
                 }
+                else
+                {
+                    MessageBox.Show("El libro no existe");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Texto no valido para buscar");
+            }
+        }
+
+        public void busacarFecha()
+        {
+            String buscar = TxtBusc.Text;
+            if (!string.IsNullOrEmpty(buscar))
+            {
+                LvListar.Items.Clear();
+                foreach (Transaccion i in Form1.transacciones)
+                {
+                    if (i.FechaTransaccion.ToString() == buscar + " 0:00:00")
+                    {
+                        if (i.GetType() == Type.GetType("biblioteca_proyecto.Prestamo"))
+                        {
+                            Prestamo p = (Prestamo)i;
+                            ListViewItem linea = LvListar.Items.Add("Prestamo");
+                            linea.SubItems.Add(Convert.ToString(p.Libro));
+                            linea.SubItems.Add(p.Persona);
+                            linea.SubItems.Add(Convert.ToString(p.FechaDevolucion));
+
+                        }
+                        if (i.GetType() == Type.GetType("biblioteca_proyecto.Devolucion"))
+                        {
+                            Devolucion d = (Devolucion)i;
+                            ListViewItem linea2 = LvListar.Items.Add("Devolucion");
+                            linea2.SubItems.Add(Convert.ToString(d.Libro));
+
+                        }
+                    }
+
+                }
+
+
             }
             else
             {
