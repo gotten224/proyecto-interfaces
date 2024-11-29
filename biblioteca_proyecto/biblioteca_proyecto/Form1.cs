@@ -275,7 +275,7 @@ namespace biblioteca_proyecto
 
         private void SobreescribirTransacciones()
         {
-            String path = Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\transaciones.txt";
+            String path = Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\transacciones.txt";
             StreamWriter streamOut = new StreamWriter(path, true);
             DateTime fechAct = DateTime.Now.Date;
             streamOut.WriteLine(fechAct.ToShortDateString());
