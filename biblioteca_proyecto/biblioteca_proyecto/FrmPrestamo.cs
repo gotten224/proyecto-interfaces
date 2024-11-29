@@ -331,7 +331,7 @@ namespace biblioteca_proyecto
             {
                 foreach (Transaccion i in Form1.transacciones)
                 {
-                    if (i.FechaTransaccion.ToString() == buscar + " 0:00:00")
+                    if (i.FechaTransaccion.ToShortDateString() == buscar)
                     {
                         if (i.GetType() == Type.GetType("biblioteca_proyecto.Prestamo"))
                         {
