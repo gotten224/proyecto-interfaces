@@ -152,13 +152,14 @@ namespace biblioteca_proyecto
             {
                 StreamReader pr = new StreamReader(Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\transacciones.txt", System.Text.Encoding.UTF8);
                 linea = pr.ReadLine();
+                DateTime fecha = DateTime.MinValue;
                 while (linea != null)
                 {
                     String[] spliteado = linea.Split(",");
                     String tipoYNombre = spliteado[0].Trim();
                     String[] prestamos = linea.Split(" ");
                     String nombre = tipoYNombre.Substring(tipoYNombre.IndexOf(' ') + 1);
-                    DateTime fecha = DateTime.MinValue;
+                    
                     if (linea.StartsWith("fecha"))
                     {
                         String[] splitfech = linea.Split(" ");

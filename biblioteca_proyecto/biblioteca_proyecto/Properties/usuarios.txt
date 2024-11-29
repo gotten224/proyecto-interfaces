@@ -1,11 +1,11 @@
-profesor Miguel Angel Fernandez,                  Informatica, 01/12/2021 0:00:00
-profesor Felisa Perez,                  Administrativo
-profesor Albert Einstein,                  Electricidad
-pas Juan Sanz,                  Secretaria
-pas Pedro Almodovar,                  Limpieza
-alumno Juan Dorado,                  Informatica
-alumno Sol Fernandez,                  Informatica
-alumno Jose Saramago,                  Administrativo, 01/12/2021 0:00:00
-alumno Miguel Hernandez,                  Administrativo
-alumno prueba,                 a
-pas prueba2,                 a, 01/01/2025 0:00:00
+profesor Miguel Angel Fernandez,                          Informatica, 01/12/2021 0:00:00
+profesor Felisa Perez,                          Administrativo
+profesor Albert Einstein,                          Electricidad
+pas Juan Sanz,                          Secretaria
+pas Pedro Almodovar,                          Limpieza
+alumno Juan Dorado,                          Informatica
+alumno Sol Fernandez,                          Informatica
+alumno Jose Saramago,                          Administrativo, 01/12/2021 0:00:00
+alumno Miguel Hernandez,                          Administrativo
+alumno prueba,                         a
+pas prueba2,                         a, 01/01/2025 0:00:00
