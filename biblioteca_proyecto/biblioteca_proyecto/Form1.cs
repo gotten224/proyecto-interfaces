@@ -225,12 +225,13 @@ namespace biblioteca_proyecto
         {
             SobreescribirLibros();
             SobrescribirPersonas();
+            SobreescribirTransacciones();
         }
 
         private void SobreescribirLibros()
         {
             String path = Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\libros.txt";
-            StreamWriter streamOut = new StreamWriter(path);
+            StreamWriter streamOut = new StreamWriter(path, false);
             foreach (Libro l in libros)
             {
                 streamOut.WriteLine(l.Tipo + " " + l.Titulo + ", " + l.Id.ToString());
@@ -244,7 +245,7 @@ namespace biblioteca_proyecto
         private void SobrescribirPersonas()
         {
             String path = Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\usuarios.txt";
-            StreamWriter streamOut = new StreamWriter(path);
+            StreamWriter streamOut = new StreamWriter(path, false);
             foreach (Persona p in personas)
             {
                 String tipo = "";
@@ -270,6 +271,40 @@ namespace biblioteca_proyecto
             }
             streamOut.Close();
             MessageBox.Show("Los usuarios se han guardado correctamente");
+        }
+
+        private void SobreescribirTransacciones()
+        {
+            String path = Application.ExecutablePath + "\\..\\..\\..\\..\\Properties\\libros.txt";
+            StreamWriter streamOut = new StreamWriter(path, true);
+            DateTime fechAct = DateTime.Now.Date;
+            streamOut.WriteLine(fechAct.ToShortDateString());
+            foreach (Transaccion t in transaccionesNuevas)
+            {
+                String tipo = "";
+                if (t.GetType() == Type.GetType("biblioteca_proyecto.Prestamo"))
+                {
+                    tipo = "prestamo";
+                }
+                else if (t.GetType() == Type.GetType("biblioteca_proyecto.Devolucion"))
+                {
+                    tipo = "devolucion";
+                }
+                if (tipo == "prestamo")
+                {
+                    Prestamo p = (Prestamo) t;
+                    streamOut.WriteLine(tipo + " " + p.Persona + ", " + p.Libro + ", " + p.FechaDevolucion);
+                }
+                if(tipo == "devolucion")
+                {
+                    Devolucion d = (Devolucion) t;
+                    streamOut.WriteLine(tipo + " " + d.Libro);
+                }
+            }
+                streamOut.Close();
+            MessageBox.Show("Las transacciones se han guardado correctamente");
+
+
         }
     }
 }
