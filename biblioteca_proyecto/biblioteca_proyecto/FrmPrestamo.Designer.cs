@@ -276,8 +276,7 @@
             // 
             // Tipo
             // 
-            Tipo.Text = "Tipo";
-            Tipo.Width = 100;
+
             // 
             // TpBuscar
             // 
@@ -419,7 +418,6 @@
             Controls.Add(tabControl1);
             Name = "FrmPrestamo";
             Text = "FrmPrestamo";
-            Load += FrmPrestamo_Load;
             tabControl1.ResumeLayout(false);
             TpAlta.ResumeLayout(false);
             TpAlta.PerformLayout();
