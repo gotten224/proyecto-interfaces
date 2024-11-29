@@ -367,19 +367,19 @@ namespace biblioteca_proyecto
             String buscar = TxtBusc.Text;
             if (!string.IsNullOrEmpty(buscar))
             {
-                
+                LvListar.Items.Clear();
 
                 // Buscar personas por departamento
                 foreach (Persona p in Form1.personas)
                 {
                     if (buscar == p.Departamento.Trim())
                     {
-                        LvListar.Items.Clear();
+                        
                         foreach (Transaccion i in Form1.transacciones)
                         { 
                             if (i.GetType() == Type.GetType("biblioteca_proyecto.Prestamo"))
                             {
-                                    Prestamo pr = (Prestamo)i;
+                                Prestamo pr = (Prestamo)i;
                                 if (pr.Persona == p.Nombre)
                                 {
                                     ListViewItem linea = LvListar.Items.Add("Prestamo");
@@ -391,6 +391,7 @@ namespace biblioteca_proyecto
                             }
 
                         }
+                        
                     }
                 }
 
