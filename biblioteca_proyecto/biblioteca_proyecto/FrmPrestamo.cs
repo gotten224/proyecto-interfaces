@@ -79,6 +79,8 @@ namespace biblioteca_proyecto
                     }
                 }
                 p.FechaDevolucion = FechaDevolucion;
+                Form1.transacciones.Add(p);
+                Form1.transaccionesNuevas.Add(p);
                 MessageBox.Show("Prestamo Creado");
 
             }
@@ -94,9 +96,9 @@ namespace biblioteca_proyecto
                     }
                 }
 
-
-
                 d.Libro = ls.Id;
+                Form1.transacciones.Add(d);
+                Form1.transaccionesNuevas.Add(d);
                 MessageBox.Show("Devolucion Creada");
             }
         }
@@ -186,7 +188,7 @@ namespace biblioteca_proyecto
             
             if (CbBuscar.Text == "Tipo de movimiento")
             {
-
+                busacarMovimiento();
             }
             else if(CbBuscar.Text == "Titulo")
             {
@@ -207,6 +209,19 @@ namespace biblioteca_proyecto
             else
             {
                 MessageBox.Show("Debes seleccionar un tipo de busqueda");
+            }
+        }
+
+        public void busacarMovimiento()
+        {
+            String buscar = TxtBusc.Text;
+            if (!string.IsNullOrEmpty(buscar))
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("No has escrito el texto para buscar");
             }
         }
     }
