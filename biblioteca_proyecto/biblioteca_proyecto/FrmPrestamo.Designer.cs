@@ -43,7 +43,9 @@
             LbDepart = new Label();
             LbNombre = new Label();
             TpListar = new TabPage();
-            CbTipo = new ComboBox();
+            BtnBusc = new Button();
+            TxtBusc = new TextBox();
+            CbBuscar = new ComboBox();
             PbBorr = new PictureBox();
             LvListar = new ListView();
             Columna1 = new ColumnHeader();
@@ -62,8 +64,6 @@
             label4 = new Label();
             label3 = new Label();
             epTransacciones = new ErrorProvider(components);
-            BtnBusc = new Button();
-            TxtBusc = new TextBox();
             tabControl1.SuspendLayout();
             TpAlta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PbTipo).BeginInit();
@@ -107,7 +107,6 @@
             TpAlta.TabIndex = 0;
             TpAlta.Text = "Alta";
             TpAlta.UseVisualStyleBackColor = true;
-            TpAlta.Click += TpAlta_Click;
             // 
             // PbTipo
             // 
@@ -208,7 +207,7 @@
             // 
             TpListar.Controls.Add(BtnBusc);
             TpListar.Controls.Add(TxtBusc);
-            TpListar.Controls.Add(CbTipo);
+            TpListar.Controls.Add(CbBuscar);
             TpListar.Controls.Add(PbBorr);
             TpListar.Controls.Add(LvListar);
             TpListar.Location = new Point(4, 24);
@@ -219,15 +218,31 @@
             TpListar.Text = "Listado";
             TpListar.UseVisualStyleBackColor = true;
             // 
-            // CbTipo
+            // BtnBusc
             // 
-            CbTipo.FormattingEnabled = true;
-            CbTipo.Items.AddRange(new object[] { "Tipo de movimiento", "Titulo", "Usuario", "Fecha", "Departamento" });
-            CbTipo.Location = new Point(10, 29);
-            CbTipo.Name = "CbTipo";
-            CbTipo.Size = new Size(262, 23);
-            CbTipo.TabIndex = 20;
-            CbTipo.SelectedIndexChanged += CbTipo_SelectedIndexChanged;
+            BtnBusc.Location = new Point(487, 29);
+            BtnBusc.Name = "BtnBusc";
+            BtnBusc.Size = new Size(75, 23);
+            BtnBusc.TabIndex = 34;
+            BtnBusc.Text = "Buscar";
+            BtnBusc.UseVisualStyleBackColor = true;
+            BtnBusc.Click += BtnBusc_Click;
+            // 
+            // TxtBusc
+            // 
+            TxtBusc.Location = new Point(327, 29);
+            TxtBusc.Name = "TxtBusc";
+            TxtBusc.Size = new Size(154, 23);
+            TxtBusc.TabIndex = 33;
+            // 
+            // CbBuscar
+            // 
+            CbBuscar.FormattingEnabled = true;
+            CbBuscar.Items.AddRange(new object[] { "Tipo de movimiento", "Titulo", "Usuario", "Fecha", "Departamento" });
+            CbBuscar.Location = new Point(10, 29);
+            CbBuscar.Name = "CbBuscar";
+            CbBuscar.Size = new Size(262, 23);
+            CbBuscar.TabIndex = 20;
             // 
             // PbBorr
             // 
@@ -383,22 +398,6 @@
             // 
             epTransacciones.ContainerControl = this;
             // 
-            // BtnBusc
-            // 
-            BtnBusc.Location = new Point(487, 29);
-            BtnBusc.Name = "BtnBusc";
-            BtnBusc.Size = new Size(75, 23);
-            BtnBusc.TabIndex = 34;
-            BtnBusc.Text = "Buscar";
-            BtnBusc.UseVisualStyleBackColor = true;
-            // 
-            // TxtBusc
-            // 
-            TxtBusc.Location = new Point(327, 29);
-            TxtBusc.Name = "TxtBusc";
-            TxtBusc.Size = new Size(154, 23);
-            TxtBusc.TabIndex = 33;
-            // 
             // FrmPrestamo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -442,7 +441,7 @@
         private Label LbDepart;
         private Label LbNombre;
         private TabPage TpListar;
-        private ComboBox CbTipo;
+        private ComboBox CbBuscar;
         private PictureBox PbBorr;
         private ListView LvListar;
         private TabPage TpBuscar;
