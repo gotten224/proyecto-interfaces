@@ -161,7 +161,23 @@ namespace biblioteca_proyecto
                     DateTime fecha = DateTime.MinValue;
                     if (linea.StartsWith("fecha"))
                     {
-                        fecha = Convert.ToDateTime(nombre + spliteado[1] + spliteado[2]);
+                        String[] splitfech = linea.Split(" ");
+                        String dia = splitfech[1].Trim(',');
+                        String smes = splitfech[2].Trim(',');
+                        int imes = Convert.ToInt32(smes);
+                        String mes = "";
+                        if (imes < 10)
+                        {
+                            mes = "0"+smes;
+                        }
+                        else
+                        {
+                            mes = smes;
+                        }
+                        String anio = splitfech[3].Trim(',');
+                        String fech = dia + "/" + mes + "/" + anio;
+                        fecha = Convert.ToDateTime(fech);
+                        MessageBox.Show(fecha.ToShortDateString());
 
                     }
                     else if (linea.StartsWith("prestamo"))
