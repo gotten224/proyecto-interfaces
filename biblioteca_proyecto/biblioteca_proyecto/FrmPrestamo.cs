@@ -8,6 +8,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows.Forms;
 
 namespace biblioteca_proyecto
@@ -30,7 +31,7 @@ namespace biblioteca_proyecto
                 Prestamo p = new Prestamo(fechaActual);
                 Libro ls = new Libro();
                 Persona pe = new Persona();
-                
+
                 //Se busca el libro en la Coleccion de Libros
                 foreach (Libro l in Form1.libros)
                 {
@@ -87,7 +88,7 @@ namespace biblioteca_proyecto
                         }
                     }
                 }
-                if(pe == null)
+                if (pe == null)
                 {
                     MessageBox.Show("No se puede crear un Préstamo porque la persona asignada no existe.");
                     return;
@@ -110,7 +111,8 @@ namespace biblioteca_proyecto
                     }
                 }
 
-                if (ls == null) {
+                if (ls == null)
+                {
                     MessageBox.Show("No se puede crear una Devolucion porque el libro asignado no existe.");
                     return;
                 }
@@ -181,6 +183,7 @@ namespace biblioteca_proyecto
         {
             if (tabControl1.SelectedTab.Text == "Listado")
             {
+                LvListar.Items.Clear();
                 foreach (Transaccion i in Form1.transacciones)
                 {
                     if (i.GetType() == Type.GetType("biblioteca_proyecto.Prestamo"))
@@ -204,18 +207,19 @@ namespace biblioteca_proyecto
 
         private void BtnBusc_Click(object sender, EventArgs e)
         {
-            
+
             if (CbBuscar.Text == "Tipo de movimiento")
             {
                 busacarMovimiento();
             }
-            else if(CbBuscar.Text == "Titulo")
+            else if (CbBuscar.Text == "Titulo")
             {
                 busacarTitulo();
             }
             else if (CbBuscar.Text == "Usuario")
             {
-
+                LvListar.Items.Clear();
+                BuscarUsuario();
             }
             else if (CbBuscar.Text == "Fecha")
             {
@@ -374,9 +378,9 @@ namespace biblioteca_proyecto
                 {
                     if (buscar == p.Departamento.Trim())
                     {
-                        
+
                         foreach (Transaccion i in Form1.transacciones)
-                        { 
+                        {
                             if (i.GetType() == Type.GetType("biblioteca_proyecto.Prestamo"))
                             {
                                 Prestamo pr = (Prestamo)i;
@@ -391,18 +395,79 @@ namespace biblioteca_proyecto
                             }
 
                         }
-                        
+
                     }
                 }
 
-                
-                   
+
+
             }
             else
             {
                 MessageBox.Show("Texto no válido para buscar");
             }
         }
+        private void BuscarUsuario()
+        {
+            String buscar = TxtBusc.Text;
+            foreach (Transaccion transaccion in Form1.transacciones)
+            {
+                if (transaccion is Prestamo prestamo)
+                {
+                    if (prestamo.Persona == buscar)
+                    {
+                        ListViewItem item = new ListViewItem("Prestamo");
+                        item.SubItems.Add(prestamo.Libro.ToString());
+                        item.SubItems.Add(prestamo.Persona);
+                        item.SubItems.Add(prestamo.FechaDevolucion.ToString());
+                        LvListar.Items.Add(item);
+                    }
 
+                }
+
+            }
+
+        }
+
+        private void LvListar_DoubleClick(object sender, EventArgs e)
+        {
+            if(LvListar.SelectedItems.Count > 0)
+            {
+                ListViewItem itemSeleccionado = LvListar.SelectedItems[0];
+                String libroSeleccionado = itemSeleccionado.SubItems[1].Text;
+                Transaccion transaccionSeleccionada = null;
+
+                foreach(var transaccion in Form1.transacciones)
+                {
+                    if(transaccion is Prestamo prestamo && itemSeleccionado.Text == "Prestamo")
+                    {
+                        if(prestamo.Libro.ToString() == libroSeleccionado && prestamo.Persona == itemSeleccionado.SubItems[2].Text)
+                        {
+                            transaccionSeleccionada = prestamo;
+                            break;
+                        }
+                    }else if(transaccion is Devolucion devolucion && itemSeleccionado.Text == "Devolucion")
+                    {
+                        if(devolucion.Libro.ToString() == libroSeleccionado)
+                        {
+                            transaccionSeleccionada = devolucion;
+                            break;
+                        }
+                    }
+                }
+
+                if(transaccionSeleccionada != null)
+                {
+                    FrmModificar f = new FrmModificar(transaccionSeleccionada);
+                    f.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Transaccion no encontrada. ");
+                }
+
+            }
+        }
     }
+
 }

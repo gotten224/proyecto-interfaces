@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace biblioteca_proyecto
 {
-    internal class Transaccion
+    public class Transaccion
     {
         DateTime fechaTransaccion;
 
