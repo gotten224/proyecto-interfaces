@@ -263,6 +263,7 @@
             LvListar.TabIndex = 0;
             LvListar.UseCompatibleStateImageBehavior = false;
             LvListar.View = View.Details;
+            LvListar.DoubleClick += LvListar_DoubleClick;
             // 
             // Columna1
             // 
