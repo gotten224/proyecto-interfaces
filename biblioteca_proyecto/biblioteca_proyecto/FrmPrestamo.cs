@@ -141,14 +141,7 @@ namespace biblioteca_proyecto
         }
         private void RbtipoBusc_CheckedChanged(object sender, EventArgs e)
         {
-            if (RbDevBusc.Checked)
-            {
-                PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\devult.png";
-            }
-            if (RbPrestBusc.Checked)
-            {
-                PbTipo.ImageLocation = Application.ExecutablePath + "\\..\\..\\..\\..\\img\\prest.jpg";
-            }
+
 
         }
 
@@ -431,24 +424,25 @@ namespace biblioteca_proyecto
 
         private void LvListar_DoubleClick(object sender, EventArgs e)
         {
-            if(LvListar.SelectedItems.Count > 0)
+            if (LvListar.SelectedItems.Count > 0)
             {
                 ListViewItem itemSeleccionado = LvListar.SelectedItems[0];
                 String libroSeleccionado = itemSeleccionado.SubItems[1].Text;
                 Transaccion transaccionSeleccionada = null;
 
-                foreach(var transaccion in Form1.transacciones)
+                foreach (var transaccion in Form1.transacciones)
                 {
-                    if(transaccion is Prestamo prestamo && itemSeleccionado.Text == "Prestamo")
+                    if (transaccion is Prestamo prestamo && itemSeleccionado.Text == "Prestamo")
                     {
-                        if(prestamo.Libro.ToString() == libroSeleccionado && prestamo.Persona == itemSeleccionado.SubItems[2].Text)
+                        if (prestamo.Libro.ToString() == libroSeleccionado && prestamo.Persona == itemSeleccionado.SubItems[2].Text)
                         {
                             transaccionSeleccionada = prestamo;
                             break;
                         }
-                    }else if(transaccion is Devolucion devolucion && itemSeleccionado.Text == "Devolucion")
+                    }
+                    else if (transaccion is Devolucion devolucion && itemSeleccionado.Text == "Devolucion")
                     {
-                        if(devolucion.Libro.ToString() == libroSeleccionado)
+                        if (devolucion.Libro.ToString() == libroSeleccionado)
                         {
                             transaccionSeleccionada = devolucion;
                             break;
@@ -456,7 +450,7 @@ namespace biblioteca_proyecto
                     }
                 }
 
-                if(transaccionSeleccionada != null)
+                if (transaccionSeleccionada != null)
                 {
                     FrmModificar f = new FrmModificar(transaccionSeleccionada);
                     f.ShowDialog();
@@ -468,6 +462,44 @@ namespace biblioteca_proyecto
 
             }
         }
+
+        private void PbBorr_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int indice = LvListar.SelectedItems[0].Index;
+                Transaccion transaccionSeleccionada = Form1.transacciones[indice];
+                Form1.transacciones.Remove(transaccionSeleccionada);
+                Form1.transaccionesNuevas.Remove(transaccionSeleccionada);
+                LvListar.Items.Clear();
+                foreach (Transaccion i in Form1.transacciones)
+                {
+                    if (i.GetType() == Type.GetType("biblioteca_proyecto.Prestamo"))
+                    {
+                        Prestamo p = (Prestamo)i;
+                        ListViewItem linea = LvListar.Items.Add("Prestamo");
+                        linea.SubItems.Add(Convert.ToString(p.Libro));
+                        linea.SubItems.Add(p.Persona);
+                        linea.SubItems.Add(Convert.ToString(p.FechaDevolucion));
+                    }
+                    else if (i.GetType() == Type.GetType("biblioteca_proyecto.Devolucion"))
+                    {
+                        Devolucion d = (Devolucion)i;
+                        ListViewItem linea2 = LvListar.Items.Add("Devolucion");
+                        linea2.SubItems.Add(Convert.ToString(d.Libro));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ha ocurrido un error al intentar borrar un usuario");
+            }
+
+
+
+        }
+
+
     }
 
 }

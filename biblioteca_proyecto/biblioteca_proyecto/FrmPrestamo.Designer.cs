@@ -52,17 +52,6 @@
             Columna2 = new ColumnHeader();
             Columna3 = new ColumnHeader();
             columna4 = new ColumnHeader();
-            TpBuscar = new TabPage();
-            PbModif = new PictureBox();
-            groupBox2 = new GroupBox();
-            RbDevBusc = new RadioButton();
-            RbPrestBusc = new RadioButton();
-            TxtIsbnBusc = new TextBox();
-            TxtNomBusc = new TextBox();
-            PbBusc = new PictureBox();
-            label1 = new Label();
-            label4 = new Label();
-            label3 = new Label();
             epTransacciones = new ErrorProvider(components);
             tabControl1.SuspendLayout();
             TpAlta.SuspendLayout();
@@ -71,10 +60,6 @@
             groupBox1.SuspendLayout();
             TpListar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PbBorr).BeginInit();
-            TpBuscar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)PbModif).BeginInit();
-            groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)PbBusc).BeginInit();
             ((System.ComponentModel.ISupportInitialize)epTransacciones).BeginInit();
             SuspendLayout();
             // 
@@ -82,7 +67,6 @@
             // 
             tabControl1.Controls.Add(TpAlta);
             tabControl1.Controls.Add(TpListar);
-            tabControl1.Controls.Add(TpBuscar);
             tabControl1.Location = new Point(2, -4);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -253,6 +237,7 @@
             PbBorr.SizeMode = PictureBoxSizeMode.StretchImage;
             PbBorr.TabIndex = 19;
             PbBorr.TabStop = false;
+            PbBorr.Click += PbBorr_Click;
             // 
             // LvListar
             // 
@@ -285,116 +270,6 @@
             columna4.Text = "Fecha Devolucion";
             columna4.Width = 240;
             // 
-            // TpBuscar
-            // 
-            TpBuscar.Controls.Add(PbModif);
-            TpBuscar.Controls.Add(groupBox2);
-            TpBuscar.Controls.Add(TxtIsbnBusc);
-            TpBuscar.Controls.Add(TxtNomBusc);
-            TpBuscar.Controls.Add(PbBusc);
-            TpBuscar.Controls.Add(label1);
-            TpBuscar.Controls.Add(label4);
-            TpBuscar.Controls.Add(label3);
-            TpBuscar.Location = new Point(4, 24);
-            TpBuscar.Name = "TpBuscar";
-            TpBuscar.Padding = new Padding(3);
-            TpBuscar.Size = new Size(788, 430);
-            TpBuscar.TabIndex = 2;
-            TpBuscar.Text = "Buscar";
-            TpBuscar.UseVisualStyleBackColor = true;
-            // 
-            // PbModif
-            // 
-            PbModif.Image = (Image)resources.GetObject("PbModif.Image");
-            PbModif.Location = new Point(23, 367);
-            PbModif.Name = "PbModif";
-            PbModif.Size = new Size(41, 42);
-            PbModif.SizeMode = PictureBoxSizeMode.StretchImage;
-            PbModif.TabIndex = 33;
-            PbModif.TabStop = false;
-            // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(RbDevBusc);
-            groupBox2.Controls.Add(RbPrestBusc);
-            groupBox2.Location = new Point(158, 250);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(200, 70);
-            groupBox2.TabIndex = 26;
-            groupBox2.TabStop = false;
-            // 
-            // RbDevBusc
-            // 
-            RbDevBusc.AutoSize = true;
-            RbDevBusc.Location = new Point(20, 41);
-            RbDevBusc.Name = "RbDevBusc";
-            RbDevBusc.Size = new Size(85, 19);
-            RbDevBusc.TabIndex = 1;
-            RbDevBusc.Text = "Devolucion";
-            RbDevBusc.UseVisualStyleBackColor = true;
-            RbDevBusc.CheckedChanged += RbtipoBusc_CheckedChanged;
-            // 
-            // RbPrestBusc
-            // 
-            RbPrestBusc.AutoSize = true;
-            RbPrestBusc.Location = new Point(20, 16);
-            RbPrestBusc.Name = "RbPrestBusc";
-            RbPrestBusc.Size = new Size(75, 19);
-            RbPrestBusc.TabIndex = 0;
-            RbPrestBusc.Text = "Prestamo";
-            RbPrestBusc.UseVisualStyleBackColor = true;
-            RbPrestBusc.CheckedChanged += RbtipoBusc_CheckedChanged;
-            // 
-            // TxtIsbnBusc
-            // 
-            TxtIsbnBusc.Location = new Point(158, 158);
-            TxtIsbnBusc.Name = "TxtIsbnBusc";
-            TxtIsbnBusc.Size = new Size(200, 23);
-            TxtIsbnBusc.TabIndex = 25;
-            // 
-            // TxtNomBusc
-            // 
-            TxtNomBusc.Location = new Point(158, 120);
-            TxtNomBusc.Name = "TxtNomBusc";
-            TxtNomBusc.Size = new Size(200, 23);
-            TxtNomBusc.TabIndex = 24;
-            // 
-            // PbBusc
-            // 
-            PbBusc.Location = new Point(400, 14);
-            PbBusc.Name = "PbBusc";
-            PbBusc.Size = new Size(368, 402);
-            PbBusc.SizeMode = PictureBoxSizeMode.StretchImage;
-            PbBusc.TabIndex = 30;
-            PbBusc.TabStop = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(23, 250);
-            label1.Name = "label1";
-            label1.Size = new Size(31, 15);
-            label1.TabIndex = 23;
-            label1.Text = "Tipo";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(23, 123);
-            label4.Name = "label4";
-            label4.Size = new Size(51, 15);
-            label4.TabIndex = 20;
-            label4.Text = "Nombre";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(23, 161);
-            label3.Name = "label3";
-            label3.Size = new Size(59, 15);
-            label3.TabIndex = 21;
-            label3.Text = "ISBN libro";
-            // 
             // epTransacciones
             // 
             epTransacciones.ContainerControl = this;
@@ -417,12 +292,6 @@
             TpListar.ResumeLayout(false);
             TpListar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PbBorr).EndInit();
-            TpBuscar.ResumeLayout(false);
-            TpBuscar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)PbModif).EndInit();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)PbBusc).EndInit();
             ((System.ComponentModel.ISupportInitialize)epTransacciones).EndInit();
             ResumeLayout(false);
         }
@@ -445,19 +314,7 @@
         private ComboBox CbBuscar;
         private PictureBox PbBorr;
         private ListView LvListar;
-        private TabPage TpBuscar;
-        private PictureBox PbModif;
-        private PictureBox PbBusc;
         private MaskedTextBox MtbFechDevBusc;
-
-        private GroupBox groupBox2;
-        private RadioButton RbDevBusc;
-        private RadioButton RbPrestBusc;
-        private TextBox TxtIsbnBusc;
-        private TextBox TxtNomBusc;
-        private Label label1;
-        private Label label4;
-        private Label label3;
         private ErrorProvider epTransacciones;
         private ColumnHeader Columna1;
         private ColumnHeader Columna2;
