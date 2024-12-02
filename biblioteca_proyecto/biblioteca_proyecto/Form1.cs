@@ -178,7 +178,6 @@ namespace biblioteca_proyecto
                         String anio = splitfech[3].Trim(',');
                         String fech = dia + "/" + mes + "/" + anio;
                         fecha = Convert.ToDateTime(fech);
-                        MessageBox.Show(fecha.ToShortDateString());
 
                     }
                     else if (linea.StartsWith("prestamo"))
